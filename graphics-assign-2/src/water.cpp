@@ -56,43 +56,7 @@ Water::Water(float x, float y, float z, float length, float breadth, float heigh
         -breadth/2,length/2,height/2,
         breadth/2,length/2,height/2,
         breadth/2,length/2,-height/2,
-//        -1.0f,-1.0f,-1.0f, // triangle 1 : begin
-//        -1.0f,-1.0f, 1.0f,
-//        -1.0f, 1.0f, 1.0f, // triangle 1 : end
-//        1.0f, 1.0f,-1.0f, // triangle 2 : begin
-//        -1.0f,-1.0f,-1.0f,
-//        -1.0f, 1.0f,-1.0f, // triangle 2 : end
-//        1.0f,-1.0f, 1.0f,
-//        -1.0f,-1.0f,-1.0f,
-//        1.0f,-1.0f,-1.0f,
-//        1.0f, 1.0f,-1.0f,
-//        1.0f,-1.0f,-1.0f,
-//        -1.0f,-1.0f,-1.0f,
-//        -1.0f,-1.0f,-1.0f,
-//        -1.0f, 1.0f, 1.0f,
-//        -1.0f, 1.0f,-1.0f,
-//        1.0f,-1.0f, 1.0f,
-//        -1.0f,-1.0f, 1.0f,
-//        -1.0f,-1.0f,-1.0f,
-//        -1.0f, 1.0f, 1.0f,
-//        -1.0f,-1.0f, 1.0f,
-//        1.0f,-1.0f, 1.0f,
-//        1.0f, 1.0f, 1.0f,
-//        1.0f,-1.0f,-1.0f,
-//        1.0f, 1.0f,-1.0f,
-//        1.0f,-1.0f,-1.0f,
-//        1.0f, 1.0f, 1.0f,
-//        1.0f,-1.0f, 1.0f,
-//        1.0f, 1.0f, 1.0f,
-//        1.0f, 1.0f,-1.0f,
-//        -1.0f, 1.0f,-1.0f,
-//        1.0f, 1.0f, 1.0f,
-//        -1.0f, 1.0f,-1.0f,
-//        -1.0f, 1.0f, 1.0f,
-//        1.0f, 1.0f, 1.0f,
-//        -1.0f, 1.0f, 1.0f,
-//        1.0f,-1.0f, 1.0f
-//    };
+
     };
     this->object = create3DObject(GL_TRIANGLES, 12*3, vertex_buffer_data, color, GL_FILL);
 }

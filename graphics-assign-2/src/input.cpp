@@ -40,6 +40,9 @@ void keyboard(GLFWwindow *window, int key, int scancode, int action, int mods) {
         // }
     } else if (action == GLFW_PRESS) {
         switch (key) {
+        case GLFW_KEY_SPACE:
+            jump();
+            break;
         case GLFW_KEY_ESCAPE:
             quit(window);
             break;

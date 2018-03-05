@@ -5,12 +5,14 @@ Boat::Boat(float x,float y,float z,float length,float width,float height,color_t
 {
     this->position = glm::vec3(x, y, z);
     this->rotation = 0;
-    speed = 1;
+    speed = 0.009;
+//    speedz = 1.20;
     float l,w,hn,hf;
     l = length/2;
     w = width/2;
     hn = height/4;\
     hf = height;
+    float radius = w;
     // Our vertices. Three consecutive floats give a 3D vertex; Three consecutive vertices give a triangle.
     // A cube has 6 faces with 2 triangles each, so this makes 6*2=12 triangles, and 12*3 vertices
     static const GLfloat vertex_buffer_data_base[] = {
@@ -153,6 +155,44 @@ Boat::Boat(float x,float y,float z,float length,float width,float height,color_t
         -w,-l,hf/2,
         -w,-l,-hf
     };
+    GLfloat vertex_buffer_data_1[720*3*3];
+            int i=0;
+            float param = -90.0;
+            for(i=0;i<720;i++)
+            {
+             if(i%2==0)
+             {
+                 vertex_buffer_data_1[9*i] = radius * sin(param * M_PI/180);
+                 vertex_buffer_data_1[9*i+1] = -length/2;
+                 vertex_buffer_data_1[9*i+2] = radius * cos(param * M_PI/180)+1;
+
+                 vertex_buffer_data_1[9*i+3] = radius * sin(param * M_PI/180);
+                 vertex_buffer_data_1[9*i+4] = 0;
+                 vertex_buffer_data_1[9*i+5] = radius * cos(param * M_PI/180)+1;
+
+
+                vertex_buffer_data_1[9*i+6] = radius * sin((param+0.5) * M_PI/180);
+                vertex_buffer_data_1[9*i+7] = 0;
+                vertex_buffer_data_1[9*i+8] = radius * cos((param+0.5) * M_PI/180)+1;
+            }
+             if(i%2==1)
+             {
+                 vertex_buffer_data_1[9*i] = radius * sin((param+0.5) * M_PI/180);
+                 vertex_buffer_data_1[9*i+1] = 0;
+                 vertex_buffer_data_1[9*i+2] = radius * cos((param+0.5) * M_PI/180)+1;
+
+                 vertex_buffer_data_1[9*i+3] = radius * sin((param+0.5) * M_PI/180);
+                 vertex_buffer_data_1[9*i+4] = -length/2;
+                 vertex_buffer_data_1[9*i+5] = radius * cos((param+0.5) * M_PI/180)+1;
+
+//                param += 0.5;
+                vertex_buffer_data_1[9*i+6] = radius * sin(param * M_PI/180);
+                vertex_buffer_data_1[9*i+7] = -length/2;
+                vertex_buffer_data_1[9*i+8] = radius * cos(param * M_PI/180)+1;
+                param += 0.5;
+            }
+
+           }
     this->base = create3DObject(GL_TRIANGLES, 10*3, vertex_buffer_data_base, COLOR_BROWN, GL_FILL);
     this->right = create3DObject(GL_TRIANGLES, 6, vertex_buffer_data_right, COLOR_WHITE, GL_FILL);
     this->left = create3DObject(GL_TRIANGLES, 6, vertex_buffer_data_left, COLOR_WHITE, GL_FILL);
@@ -161,6 +201,7 @@ Boat::Boat(float x,float y,float z,float length,float width,float height,color_t
     this->backdom = create3DObject(GL_TRIANGLES,7*3, vertex_buffer_data_backdom,COLOR_BROWN, GL_FILL);
      this->backdomtop = create3DObject(GL_TRIANGLES,3, vertex_buffer_data_backdomtop,COLOR_BROWN, GL_FILL);
      this->frontdomtop = create3DObject(GL_TRIANGLES,3, vertex_buffer_data_frontdomtop,COLOR_BROWN, GL_FILL);
+    this->top = create3DObject(GL_TRIANGLES, 240*9, vertex_buffer_data_1, COLOR_BLACK, GL_FILL);
 }
 
 void Boat::draw(glm::mat4 VP) {
@@ -181,6 +222,8 @@ void Boat::draw(glm::mat4 VP) {
     draw3DObject(this->backdom);
     draw3DObject(this->backdomtop);
     draw3DObject(this->frontdomtop);
+    draw3DObject(this->top);
+
 }
 
 void Boat::set_position(float x, float y, float z) {
@@ -188,9 +231,16 @@ void Boat::set_position(float x, float y, float z) {
 //    this->rotation += 1;
 }
 
-void Boat::tick() {
+void Boat::tickdown() {
 //this->rotation += 1;
     // this->position.x -= speed;
-    // this->position.y -= speed;
+     this->position.z -= speed;
+}
+void Boat::tickup() {
+    this->position.z += speed;
+}
+void Boat::tick() {
+        speedz = speedz - 0.012;
+         this -> position.z += speedz;
 }
 

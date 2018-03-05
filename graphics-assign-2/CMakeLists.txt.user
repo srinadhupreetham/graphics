@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 3.5.1, 2018-03-03T15:30:33. -->
+<!-- Written by QtCreator 3.5.1, 2018-03-05T11:23:32. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -73,8 +73,8 @@
       <valuelist type="QVariantList" key="CMakeProjectManager.MakeStep.BuildTargets">
        <value type="QString">all</value>
        <value type="QString">edit_cache</value>
-       <value type="QString">graphics_asgn1</value>
        <value type="QString">rebuild_cache</value>
+       <value type="QString">graphics_asgn1</value>
       </valuelist>
       <value type="bool" key="CMakeProjectManager.MakeStep.Clean">false</value>
       <value type="QString" key="CMakeProjectManager.MakeStep.MakeCommand"></value>

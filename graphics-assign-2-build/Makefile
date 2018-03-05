@@ -150,6 +150,33 @@ src/ball.cpp.s:
 	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/ball.cpp.s
 .PHONY : src/ball.cpp.s
 
+src/barrel.o: src/barrel.cpp.o
+
+.PHONY : src/barrel.o
+
+# target to build an object file
+src/barrel.cpp.o:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/barrel.cpp.o
+.PHONY : src/barrel.cpp.o
+
+src/barrel.i: src/barrel.cpp.i
+
+.PHONY : src/barrel.i
+
+# target to preprocess a source file
+src/barrel.cpp.i:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/barrel.cpp.i
+.PHONY : src/barrel.cpp.i
+
+src/barrel.s: src/barrel.cpp.s
+
+.PHONY : src/barrel.s
+
+# target to generate assembly for a file
+src/barrel.cpp.s:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/barrel.cpp.s
+.PHONY : src/barrel.cpp.s
+
 src/boat.o: src/boat.cpp.o
 
 .PHONY : src/boat.o
@@ -177,6 +204,33 @@ src/boat.cpp.s:
 	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/boat.cpp.s
 .PHONY : src/boat.cpp.s
 
+src/cannon.o: src/cannon.cpp.o
+
+.PHONY : src/cannon.o
+
+# target to build an object file
+src/cannon.cpp.o:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/cannon.cpp.o
+.PHONY : src/cannon.cpp.o
+
+src/cannon.i: src/cannon.cpp.i
+
+.PHONY : src/cannon.i
+
+# target to preprocess a source file
+src/cannon.cpp.i:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/cannon.cpp.i
+.PHONY : src/cannon.cpp.i
+
+src/cannon.s: src/cannon.cpp.s
+
+.PHONY : src/cannon.s
+
+# target to generate assembly for a file
+src/cannon.cpp.s:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/cannon.cpp.s
+.PHONY : src/cannon.cpp.s
+
 src/color.o: src/color.cpp.o
 
 .PHONY : src/color.o
@@ -203,6 +257,33 @@ src/color.s: src/color.cpp.s
 src/color.cpp.s:
 	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/color.cpp.s
 .PHONY : src/color.cpp.s
+
+src/flag.o: src/flag.cpp.o
+
+.PHONY : src/flag.o
+
+# target to build an object file
+src/flag.cpp.o:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/flag.cpp.o
+.PHONY : src/flag.cpp.o
+
+src/flag.i: src/flag.cpp.i
+
+.PHONY : src/flag.i
+
+# target to preprocess a source file
+src/flag.cpp.i:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/flag.cpp.i
+.PHONY : src/flag.cpp.i
+
+src/flag.s: src/flag.cpp.s
+
+.PHONY : src/flag.s
+
+# target to generate assembly for a file
+src/flag.cpp.s:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/flag.cpp.s
+.PHONY : src/flag.cpp.s
 
 src/input.o: src/input.cpp.o
 
@@ -312,6 +393,33 @@ src/other_handlers.cpp.s:
 	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/other_handlers.cpp.s
 .PHONY : src/other_handlers.cpp.s
 
+src/rock.o: src/rock.cpp.o
+
+.PHONY : src/rock.o
+
+# target to build an object file
+src/rock.cpp.o:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/rock.cpp.o
+.PHONY : src/rock.cpp.o
+
+src/rock.i: src/rock.cpp.i
+
+.PHONY : src/rock.i
+
+# target to preprocess a source file
+src/rock.cpp.i:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/rock.cpp.i
+.PHONY : src/rock.cpp.i
+
+src/rock.s: src/rock.cpp.s
+
+.PHONY : src/rock.s
+
+# target to generate assembly for a file
+src/rock.cpp.s:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/rock.cpp.s
+.PHONY : src/rock.cpp.s
+
 src/timer.o: src/timer.cpp.o
 
 .PHONY : src/timer.o
@@ -366,6 +474,33 @@ src/water.cpp.s:
 	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/water.cpp.s
 .PHONY : src/water.cpp.s
 
+src/wave.o: src/wave.cpp.o
+
+.PHONY : src/wave.o
+
+# target to build an object file
+src/wave.cpp.o:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/wave.cpp.o
+.PHONY : src/wave.cpp.o
+
+src/wave.i: src/wave.cpp.i
+
+.PHONY : src/wave.i
+
+# target to preprocess a source file
+src/wave.cpp.i:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/wave.cpp.i
+.PHONY : src/wave.cpp.i
+
+src/wave.s: src/wave.cpp.s
+
+.PHONY : src/wave.s
+
+# target to generate assembly for a file
+src/wave.cpp.s:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/wave.cpp.s
+.PHONY : src/wave.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -378,12 +513,21 @@ help:
 	@echo "... src/ball.o"
 	@echo "... src/ball.i"
 	@echo "... src/ball.s"
+	@echo "... src/barrel.o"
+	@echo "... src/barrel.i"
+	@echo "... src/barrel.s"
 	@echo "... src/boat.o"
 	@echo "... src/boat.i"
 	@echo "... src/boat.s"
+	@echo "... src/cannon.o"
+	@echo "... src/cannon.i"
+	@echo "... src/cannon.s"
 	@echo "... src/color.o"
 	@echo "... src/color.i"
 	@echo "... src/color.s"
+	@echo "... src/flag.o"
+	@echo "... src/flag.i"
+	@echo "... src/flag.s"
 	@echo "... src/input.o"
 	@echo "... src/input.i"
 	@echo "... src/input.s"
@@ -396,12 +540,18 @@ help:
 	@echo "... src/other_handlers.o"
 	@echo "... src/other_handlers.i"
 	@echo "... src/other_handlers.s"
+	@echo "... src/rock.o"
+	@echo "... src/rock.i"
+	@echo "... src/rock.s"
 	@echo "... src/timer.o"
 	@echo "... src/timer.i"
 	@echo "... src/timer.s"
 	@echo "... src/water.o"
 	@echo "... src/water.i"
 	@echo "... src/water.s"
+	@echo "... src/wave.o"
+	@echo "... src/wave.i"
+	@echo "... src/wave.s"
 .PHONY : help
 
 

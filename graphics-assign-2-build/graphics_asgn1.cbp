@@ -92,13 +92,31 @@
       <Unit filename="/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/ball.h">
          <Option target="graphics_asgn1"/>
       </Unit>
+      <Unit filename="/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/barrel.cpp">
+         <Option target="graphics_asgn1"/>
+      </Unit>
+      <Unit filename="/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/barrel.h">
+         <Option target="graphics_asgn1"/>
+      </Unit>
       <Unit filename="/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/boat.cpp">
          <Option target="graphics_asgn1"/>
       </Unit>
       <Unit filename="/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/boat.h">
          <Option target="graphics_asgn1"/>
       </Unit>
+      <Unit filename="/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/cannon.cpp">
+         <Option target="graphics_asgn1"/>
+      </Unit>
+      <Unit filename="/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/cannon.h">
+         <Option target="graphics_asgn1"/>
+      </Unit>
       <Unit filename="/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/color.cpp">
+         <Option target="graphics_asgn1"/>
+      </Unit>
+      <Unit filename="/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/flag.cpp">
+         <Option target="graphics_asgn1"/>
+      </Unit>
+      <Unit filename="/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/flag.h">
          <Option target="graphics_asgn1"/>
       </Unit>
       <Unit filename="/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/input.cpp">
@@ -116,6 +134,12 @@
       <Unit filename="/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/other_handlers.cpp">
          <Option target="graphics_asgn1"/>
       </Unit>
+      <Unit filename="/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/rock.cpp">
+         <Option target="graphics_asgn1"/>
+      </Unit>
+      <Unit filename="/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/rock.h">
+         <Option target="graphics_asgn1"/>
+      </Unit>
       <Unit filename="/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/timer.cpp">
          <Option target="graphics_asgn1"/>
       </Unit>
@@ -126,6 +150,12 @@
          <Option target="graphics_asgn1"/>
       </Unit>
       <Unit filename="/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/water.h">
+         <Option target="graphics_asgn1"/>
+      </Unit>
+      <Unit filename="/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/wave.cpp">
+         <Option target="graphics_asgn1"/>
+      </Unit>
+      <Unit filename="/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/wave.h">
          <Option target="graphics_asgn1"/>
       </Unit>
       <Unit filename="/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/CMakeLists.txt">

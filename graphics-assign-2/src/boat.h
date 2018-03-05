@@ -12,8 +12,11 @@ public:
     float rotation;
     void draw(glm::mat4 VP);
     void set_position(float x, float y, float z);
+    void tickup();
+    void tickdown();
     void tick();
     double speed;
+    double speedz;
 private:
     VAO *base;
     VAO *right;
@@ -23,6 +26,7 @@ private:
     VAO *backdom;
     VAO *backdomtop;
     VAO *frontdomtop;
+    VAO *top;
 };
 
 #endif // BOAT_H

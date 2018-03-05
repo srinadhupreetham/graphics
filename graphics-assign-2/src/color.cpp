@@ -10,5 +10,6 @@ const color_t COLOR_BLUE = {28,163,236};
 const color_t COLOR_DOM = {218,165,32};
 const color_t COLOR_DOMEND = {105,105,105};
 const color_t COLOR_WHITE = {255,255,255};
+const color_t COLOR_WAVE = {64,224,208};
 //35,127,218
 //28,163,236

@@ -16,6 +16,16 @@ main.h
 main.h
 /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
 
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/barrel.cpp
+barrel.h
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/barrel.h
+main.h
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
+
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/barrel.h
+main.h
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
+
 /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/boat.cpp
 main.h
 /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
@@ -26,7 +36,27 @@ boat.h
 main.h
 /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
 
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/cannon.cpp
+cannon.h
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/cannon.h
+main.h
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
+
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/cannon.h
+main.h
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
+
 /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/color.cpp
+main.h
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
+
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/flag.cpp
+flag.h
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/flag.h
+main.h
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
+
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/flag.h
 main.h
 /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
 
@@ -63,6 +93,18 @@ water.h
 /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/water.h
 boat.h
 /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/boat.h
+cannon.h
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/cannon.h
+wave.h
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/wave.h
+flag.h
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/flag.h
+rock.h
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/rock.h
+cstdlib
+-
+barrel.h
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/barrel.h
 
 /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
 iostream
@@ -128,6 +170,16 @@ glm/gtc/matrix_transform.hpp
 main.h
 /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
 
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/rock.cpp
+rock.h
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/rock.h
+main.h
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
+
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/rock.h
+main.h
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
+
 /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/timer.cpp
 timer.h
 /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/timer.h
@@ -143,6 +195,16 @@ water.h
 /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/water.h
 
 /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/water.h
+main.h
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
+
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/wave.cpp
+wave.h
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/wave.h
+main.h
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
+
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/wave.h
 main.h
 /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
 
