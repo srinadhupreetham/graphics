@@ -13,6 +13,10 @@ CMakeFiles/graphics_asgn1.dir/src/boat.cpp.o
  /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/boat.cpp
  /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/boat.h
  /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
+CMakeFiles/graphics_asgn1.dir/src/boss.cpp.o
+ /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/boss.cpp
+ /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/boss.h
+ /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
 CMakeFiles/graphics_asgn1.dir/src/cannon.cpp.o
  /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/cannon.cpp
  /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/cannon.h
@@ -31,6 +35,7 @@ CMakeFiles/graphics_asgn1.dir/src/main.cpp.o
  /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/ball.h
  /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/barrel.h
  /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/boat.h
+ /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/boss.h
  /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/cannon.h
  /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/flag.h
  /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.cpp

@@ -11,6 +11,7 @@
 #include "barrel.h"
 #include "wind_pointer.h"
 #include "monster.h"
+#include "boss.h"
 using namespace std;
 
 GLMatrices Matrices;
@@ -31,6 +32,8 @@ Wave wave1,wave2;
 Wind_pointer point;
 Monster monster[20];
 Flag flag;
+float orient;
+Boss boss;
 int windcount=0;
 int d=0,t=0;
 float angle[20];
@@ -48,6 +51,8 @@ float camera_rotation_angle = 0;
 int space1;
 int air;
 int j;
+double xin,yin,xout,yout;
+int mouse_count = 1;
 int cam=0;
 float wind_dir=0.0f;
 //float distance = 0.3;
@@ -168,7 +173,7 @@ void draw() {
         booster[j].draw(VP);
         monster[j].draw(VP);
     }
-
+    boss.draw(VP);
 }
 
 void jump(){
@@ -192,6 +197,18 @@ void tick_input(GLFWwindow *window) {
     int S = glfwGetKey(window, GLFW_KEY_4);
     int T = glfwGetKey(window, GLFW_KEY_5);
     int L = glfwGetKey(window, GLFW_KEY_0);
+    if(mouse_count == 1)
+       {
+           glfwGetCursorPos(window,&xin,&yin);
+       }
+    int mouseleft = glfwGetMouseButton(window,GLFW_MOUSE_BUTTON_LEFT);
+    mouse_count=0;
+        if(mouse_count == 0)
+        {
+           glfwGetCursorPos(window,&xout,&yout);
+    //       std :: cout << xin;
+    //       std :: cout << "\n";
+        }
     if (L) {
         shoot=true;
         ball1.position.x = cannon1.position.x;
@@ -247,10 +264,10 @@ void tick_input(GLFWwindow *window) {
         eye_y =boat1.position.y;
         eye_z = boat1.position.z+3;
     }
-    if (A){
+    if (A || ((mouseleft == GLFW_PRESS) && (xout - xin <0))){
         cannon1.rotation += 1;
     }
-    if (D){
+    if (D || ((mouseleft == GLFW_PRESS) && (xout - xin >0)) ){
         cannon1.rotation -= 1;
     }
     if (S){
@@ -317,21 +334,24 @@ void tick_input(GLFWwindow *window) {
 }
 
 void tick_elements() {
-//    boat1.position.x -= 0.05*(sin(wind_dir*M_PI/180.0));
-//    boat1.position.y += 0.05*(cos(wind_dir*M_PI/180.0));
+    orient = atan2(boss.position.y - boat1.position.y, boss.position.x - boat1.position.x);
+    boss.position.x -= 0.1*(cos(orient));
+    boss.position.y -= 0.1*(sin(orient));
+    boat1.position.x -= 0.005*(sin(wind_dir*M_PI/180.0));
+    boat1.position.y += 0.005*(cos(wind_dir*M_PI/180.0));
     flag.position.x = boat1.position.x;
     flag.position.y = boat1.position.y;
     cannon1.position.x = boat1.position.x;
     cannon1.position.y = boat1.position.y;
-//   if((int(boat1.rotation)%180 - int(wind_dir)%180 ) !=90)
-//    {
-////       if(boat1.rotation < int(wind_dir)){
-//         boat1.rotation += 0.1;
-////    }
-////    else
-////        boat1.rotation -= 0.1;
-//   }
-    cannon1.rotation = boat1.rotation;
+   if((int(boat1.rotation)%180 - int(wind_dir)%180 ) !=90)
+    {
+//       if(boat1.rotation < int(wind_dir)){
+         boat1.rotation += 0.1;
+//    }
+//    else
+//        boat1.rotation -= 0.1;
+   }
+//    cannon1.rotation = boat1.rotation;
     flag.rotation = boat1.rotation;
     point.rotation = -wind_dir;
     point.position.x = boat1.position.x + 8*sin(boat1.rotation*M_PI/180.0);
@@ -351,18 +371,39 @@ void tick_elements() {
             t = 1;
             if(boat1.position.x < rock[j].position.x)
             {
-                boat1.position.x -= 1;
+                boat1.position.x -= 2;
             }
             else
-                boat1.position.x += 1;
+                boat1.position.x += 2;
             if(boat1.position.y < rock[j].position.x)
             {
-                boat1.position.y -= 1;
+                boat1.position.y -= 2;
             }
             else
-                boat1.position.y += 1;
+                boat1.position.y += 2;
             boat1.position.z = 2;
 
+        }
+    }
+    for(j=0;j<20;j++){
+        if(detect_collision_bonus(boat1.bounding_box(),barrel[j].bounding_box()))
+        {
+//            if(boat1.position.x < barrel[j].position.x)
+//            {
+//                boat1.position.x -= 1;
+//            }
+//            else
+//                boat1.position.x += 1;
+//            if(boat1.position.y < barrel[j].position.x)
+//            {
+//                boat1.position.y -= 1;
+//            }
+//            else
+//                boat1.position.y += 1;
+//            boat1.position.z = 1;
+            boat1.health += 10;
+            barrel[j].position.x = RandomFloat(0,300);
+            bonus_ball[j].position.x = barrel[j].position.x;
         }
     }
 //    for(j=0;j<20;j++){
@@ -483,7 +524,9 @@ void initGL(GLFWwindow *window, int width, int height) {
     target_z=boat1.position.z;
     eye_x = boat1.position.x -(3*sin(-boat1.rotation*M_PI/180.0));
     eye_y = boat1.position.y -(3*cos(-boat1.rotation*M_PI/180.0));
+    boat1.health = 1000;
     eye_z = 4;
+    boss        = Boss(1000,1000,0,COLOR_BASETOP);
     for (j=0;j<50;j++)
     {
         if (j%2 == 0){
@@ -542,8 +585,8 @@ void initGL(GLFWwindow *window, int width, int height) {
 
 int main(int argc, char **argv) {
     srand(time(0));
-    int width  = 1960;
-    int height = 1048;
+    int width  = 600;
+    int height = 600;
 
     window = initGLFW(width, height);
 
@@ -572,6 +615,10 @@ int main(int argc, char **argv) {
 }
 
 bool detect_collision_rock(bounding_box_t a, bounding_box_t b) {
+    return (abs(a.x - b.x) * 2 < (a.width + b.width)) &&
+           (abs(a.y - b.y) * 2 < (a.length + b.length)) && (abs(a.z - b.z)*2 <= (a.height+b.height));
+}
+bool detect_collision_bonus(bounding_box_t a, bounding_box_t b) {
     return (abs(a.x - b.x) * 2 < (a.width + b.width)) &&
            (abs(a.y - b.y) * 2 < (a.length + b.length)) && (abs(a.z - b.z)*2 <= (a.height+b.height));
 }

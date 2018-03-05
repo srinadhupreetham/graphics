@@ -36,6 +36,16 @@ boat.h
 main.h
 /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
 
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/boss.cpp
+main.h
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
+boss.h
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/boss.h
+
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/boss.h
+main.h
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
+
 /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/cannon.cpp
 cannon.h
 /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/cannon.h
@@ -109,6 +119,8 @@ wind_pointer.h
 /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/wind_pointer.h
 monster.h
 /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/monster.h
+boss.h
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/boss.h
 
 /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
 iostream

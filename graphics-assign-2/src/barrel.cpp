@@ -6,6 +6,8 @@ Barrel::Barrel(float x,float y,float z, float radius,float length,float back)
     this->position = glm::vec3(x, y, z);
     this->rotation = 0;
     speed = 0.03;
+    this->length = length;
+    this->radius = radius;
     GLfloat vertex_buffer_data_1[720*3*3];
             int i=0;
             float param = 90.0;
@@ -145,4 +147,15 @@ void Barrel::tickdown() {
 }
 void Barrel::tickup() {
     this->position.z += speed;
+}
+
+bounding_box_t Barrel::bounding_box() {
+    float x = this->position.x, y = this->position.y;
+    float z = this->position.z + (this->length/2);
+    float len = this->radius;
+    float wid = this->radius;
+    float high = this->length;
+//    float s = this->speedy;
+    bounding_box_t bbox = { x, y,z,len,wid,high};
+    return bbox;
 }

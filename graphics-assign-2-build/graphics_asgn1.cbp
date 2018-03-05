@@ -104,6 +104,12 @@
       <Unit filename="/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/boat.h">
          <Option target="graphics_asgn1"/>
       </Unit>
+      <Unit filename="/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/boss.cpp">
+         <Option target="graphics_asgn1"/>
+      </Unit>
+      <Unit filename="/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/boss.h">
+         <Option target="graphics_asgn1"/>
+      </Unit>
       <Unit filename="/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/cannon.cpp">
          <Option target="graphics_asgn1"/>
       </Unit>

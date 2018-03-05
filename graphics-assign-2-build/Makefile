@@ -204,6 +204,33 @@ src/boat.cpp.s:
 	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/boat.cpp.s
 .PHONY : src/boat.cpp.s
 
+src/boss.o: src/boss.cpp.o
+
+.PHONY : src/boss.o
+
+# target to build an object file
+src/boss.cpp.o:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/boss.cpp.o
+.PHONY : src/boss.cpp.o
+
+src/boss.i: src/boss.cpp.i
+
+.PHONY : src/boss.i
+
+# target to preprocess a source file
+src/boss.cpp.i:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/boss.cpp.i
+.PHONY : src/boss.cpp.i
+
+src/boss.s: src/boss.cpp.s
+
+.PHONY : src/boss.s
+
+# target to generate assembly for a file
+src/boss.cpp.s:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/boss.cpp.s
+.PHONY : src/boss.cpp.s
+
 src/cannon.o: src/cannon.cpp.o
 
 .PHONY : src/cannon.o
@@ -573,6 +600,9 @@ help:
 	@echo "... src/boat.o"
 	@echo "... src/boat.i"
 	@echo "... src/boat.s"
+	@echo "... src/boss.o"
+	@echo "... src/boss.i"
+	@echo "... src/boss.s"
 	@echo "... src/cannon.o"
 	@echo "... src/cannon.i"
 	@echo "... src/cannon.s"

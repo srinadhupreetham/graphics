@@ -13,6 +13,10 @@ CMakeFiles/graphics_asgn1.dir/src/boat.cpp.o: /home/sai/Desktop/iiit-h-sem4/grap
 CMakeFiles/graphics_asgn1.dir/src/boat.cpp.o: /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/boat.h
 CMakeFiles/graphics_asgn1.dir/src/boat.cpp.o: /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
 
+CMakeFiles/graphics_asgn1.dir/src/boss.cpp.o: /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/boss.cpp
+CMakeFiles/graphics_asgn1.dir/src/boss.cpp.o: /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/boss.h
+CMakeFiles/graphics_asgn1.dir/src/boss.cpp.o: /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
+
 CMakeFiles/graphics_asgn1.dir/src/cannon.cpp.o: /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/cannon.cpp
 CMakeFiles/graphics_asgn1.dir/src/cannon.cpp.o: /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/cannon.h
 CMakeFiles/graphics_asgn1.dir/src/cannon.cpp.o: /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
@@ -30,6 +34,7 @@ CMakeFiles/graphics_asgn1.dir/src/input.cpp.o: /home/sai/Desktop/iiit-h-sem4/gra
 CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/ball.h
 CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/barrel.h
 CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/boat.h
+CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/boss.h
 CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/cannon.h
 CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/flag.h
 CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.cpp
