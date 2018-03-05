@@ -34,10 +34,16 @@ CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: /home/sai/Desktop/iiit-h-sem4/grap
 CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/flag.h
 CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.cpp
 CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
+CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/monster.h
 CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/rock.h
 CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/timer.h
 CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/water.h
 CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/wave.h
+CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/wind_pointer.h
+
+CMakeFiles/graphics_asgn1.dir/src/monster.cpp.o: /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
+CMakeFiles/graphics_asgn1.dir/src/monster.cpp.o: /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/monster.cpp
+CMakeFiles/graphics_asgn1.dir/src/monster.cpp.o: /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/monster.h
 
 CMakeFiles/graphics_asgn1.dir/src/nonedit.cpp.o: /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
 CMakeFiles/graphics_asgn1.dir/src/nonedit.cpp.o: /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/nonedit.cpp
@@ -59,4 +65,8 @@ CMakeFiles/graphics_asgn1.dir/src/water.cpp.o: /home/sai/Desktop/iiit-h-sem4/gra
 CMakeFiles/graphics_asgn1.dir/src/wave.cpp.o: /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
 CMakeFiles/graphics_asgn1.dir/src/wave.cpp.o: /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/wave.cpp
 CMakeFiles/graphics_asgn1.dir/src/wave.cpp.o: /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/wave.h
+
+CMakeFiles/graphics_asgn1.dir/src/wind_pointer.cpp.o: /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
+CMakeFiles/graphics_asgn1.dir/src/wind_pointer.cpp.o: /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/wind_pointer.cpp
+CMakeFiles/graphics_asgn1.dir/src/wind_pointer.cpp.o: /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/wind_pointer.h
 

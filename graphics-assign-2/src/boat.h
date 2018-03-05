@@ -9,7 +9,7 @@ public:
     Boat() {}
     Boat(float x,float y, float z,float length,float width,float height,color_t color);
     glm::vec3 position;
-    float rotation;
+    float rotation,length,width,height;
     void draw(glm::mat4 VP);
     void set_position(float x, float y, float z);
     void tickup();
@@ -17,6 +17,8 @@ public:
     void tick();
     double speed;
     double speedz;
+    bounding_box_t bounding_box();
+    int health;
 private:
     VAO *base;
     VAO *right;

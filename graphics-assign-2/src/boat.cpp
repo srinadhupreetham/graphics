@@ -5,8 +5,11 @@ Boat::Boat(float x,float y,float z,float length,float width,float height,color_t
 {
     this->position = glm::vec3(x, y, z);
     this->rotation = 0;
-    speed = 0.009;
+    speed = 0.02;
 //    speedz = 1.20;
+    this->length = length;
+    this->width = width;
+    this->height = 2*height;
     float l,w,hn,hf;
     l = length/2;
     w = width/2;
@@ -243,4 +246,13 @@ void Boat::tick() {
         speedz = speedz - 0.012;
          this -> position.z += speedz;
 }
-
+bounding_box_t Boat::bounding_box() {
+    float x = this->position.x, y = this->position.y;
+    float z = this->position.z;
+    float len = this->length;
+    float wid = this->width;
+    float high = this->height;
+//    float s = this->speedy;
+    bounding_box_t bbox = { x, y,z,len,wid,high};
+    return bbox;
+}

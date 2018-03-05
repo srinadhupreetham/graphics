@@ -105,6 +105,10 @@ cstdlib
 -
 barrel.h
 /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/barrel.h
+wind_pointer.h
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/wind_pointer.h
+monster.h
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/monster.h
 
 /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
 iostream
@@ -125,6 +129,16 @@ glm/gtx/transform.hpp
 -
 glm/gtc/matrix_transform.hpp
 -
+
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/monster.cpp
+monster.h
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/monster.h
+main.h
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
+
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/monster.h
+main.h
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
 
 /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/nonedit.cpp
 iostream
@@ -205,6 +219,16 @@ main.h
 /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
 
 /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/wave.h
+main.h
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
+
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/wind_pointer.cpp
+main.h
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
+wind_pointer.h
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/wind_pointer.h
+
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/wind_pointer.h
 main.h
 /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
 

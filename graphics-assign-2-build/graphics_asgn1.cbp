@@ -128,6 +128,12 @@
       <Unit filename="/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h">
          <Option target="graphics_asgn1"/>
       </Unit>
+      <Unit filename="/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/monster.cpp">
+         <Option target="graphics_asgn1"/>
+      </Unit>
+      <Unit filename="/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/monster.h">
+         <Option target="graphics_asgn1"/>
+      </Unit>
       <Unit filename="/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/nonedit.cpp">
          <Option target="graphics_asgn1"/>
       </Unit>
@@ -156,6 +162,12 @@
          <Option target="graphics_asgn1"/>
       </Unit>
       <Unit filename="/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/wave.h">
+         <Option target="graphics_asgn1"/>
+      </Unit>
+      <Unit filename="/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/wind_pointer.cpp">
+         <Option target="graphics_asgn1"/>
+      </Unit>
+      <Unit filename="/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/wind_pointer.h">
          <Option target="graphics_asgn1"/>
       </Unit>
       <Unit filename="/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/CMakeLists.txt">

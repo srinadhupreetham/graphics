@@ -5,7 +5,7 @@ Barrel::Barrel(float x,float y,float z, float radius,float length,float back)
 {
     this->position = glm::vec3(x, y, z);
     this->rotation = 0;
-    speed = 0.015;
+    speed = 0.03;
     GLfloat vertex_buffer_data_1[720*3*3];
             int i=0;
             float param = 90.0;

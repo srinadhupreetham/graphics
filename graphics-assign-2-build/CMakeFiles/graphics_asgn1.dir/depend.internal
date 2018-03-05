@@ -35,10 +35,16 @@ CMakeFiles/graphics_asgn1.dir/src/main.cpp.o
  /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/flag.h
  /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.cpp
  /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
+ /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/monster.h
  /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/rock.h
  /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/timer.h
  /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/water.h
  /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/wave.h
+ /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/wind_pointer.h
+CMakeFiles/graphics_asgn1.dir/src/monster.cpp.o
+ /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
+ /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/monster.cpp
+ /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/monster.h
 CMakeFiles/graphics_asgn1.dir/src/nonedit.cpp.o
  /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
  /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/nonedit.cpp
@@ -60,3 +66,7 @@ CMakeFiles/graphics_asgn1.dir/src/wave.cpp.o
  /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
  /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/wave.cpp
  /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/wave.h
+CMakeFiles/graphics_asgn1.dir/src/wind_pointer.cpp.o
+ /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
+ /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/wind_pointer.cpp
+ /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/wind_pointer.h

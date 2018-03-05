@@ -339,6 +339,33 @@ src/main.cpp.s:
 	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/monster.o: src/monster.cpp.o
+
+.PHONY : src/monster.o
+
+# target to build an object file
+src/monster.cpp.o:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/monster.cpp.o
+.PHONY : src/monster.cpp.o
+
+src/monster.i: src/monster.cpp.i
+
+.PHONY : src/monster.i
+
+# target to preprocess a source file
+src/monster.cpp.i:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/monster.cpp.i
+.PHONY : src/monster.cpp.i
+
+src/monster.s: src/monster.cpp.s
+
+.PHONY : src/monster.s
+
+# target to generate assembly for a file
+src/monster.cpp.s:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/monster.cpp.s
+.PHONY : src/monster.cpp.s
+
 src/nonedit.o: src/nonedit.cpp.o
 
 .PHONY : src/nonedit.o
@@ -501,6 +528,33 @@ src/wave.cpp.s:
 	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/wave.cpp.s
 .PHONY : src/wave.cpp.s
 
+src/wind_pointer.o: src/wind_pointer.cpp.o
+
+.PHONY : src/wind_pointer.o
+
+# target to build an object file
+src/wind_pointer.cpp.o:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/wind_pointer.cpp.o
+.PHONY : src/wind_pointer.cpp.o
+
+src/wind_pointer.i: src/wind_pointer.cpp.i
+
+.PHONY : src/wind_pointer.i
+
+# target to preprocess a source file
+src/wind_pointer.cpp.i:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/wind_pointer.cpp.i
+.PHONY : src/wind_pointer.cpp.i
+
+src/wind_pointer.s: src/wind_pointer.cpp.s
+
+.PHONY : src/wind_pointer.s
+
+# target to generate assembly for a file
+src/wind_pointer.cpp.s:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/wind_pointer.cpp.s
+.PHONY : src/wind_pointer.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -534,6 +588,9 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/monster.o"
+	@echo "... src/monster.i"
+	@echo "... src/monster.s"
 	@echo "... src/nonedit.o"
 	@echo "... src/nonedit.i"
 	@echo "... src/nonedit.s"
@@ -552,6 +609,9 @@ help:
 	@echo "... src/wave.o"
 	@echo "... src/wave.i"
 	@echo "... src/wave.s"
+	@echo "... src/wind_pointer.o"
+	@echo "... src/wind_pointer.i"
+	@echo "... src/wind_pointer.s"
 .PHONY : help
 
 
