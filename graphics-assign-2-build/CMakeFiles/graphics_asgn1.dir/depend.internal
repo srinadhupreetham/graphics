@@ -28,8 +28,16 @@ CMakeFiles/graphics_asgn1.dir/src/flag.cpp.o
  /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/flag.cpp
  /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/flag.h
  /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
+CMakeFiles/graphics_asgn1.dir/src/gift.cpp.o
+ /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/gift.cpp
+ /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/gift.h
+ /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
 CMakeFiles/graphics_asgn1.dir/src/input.cpp.o
  /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/input.cpp
+ /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
+CMakeFiles/graphics_asgn1.dir/src/island.cpp.o
+ /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/island.cpp
+ /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/island.h
  /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
 CMakeFiles/graphics_asgn1.dir/src/main.cpp.o
  /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/ball.h
@@ -38,10 +46,13 @@ CMakeFiles/graphics_asgn1.dir/src/main.cpp.o
  /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/boss.h
  /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/cannon.h
  /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/flag.h
+ /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/gift.h
+ /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/island.h
  /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.cpp
  /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
  /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/monster.h
  /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/rock.h
+ /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/square.h
  /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/timer.h
  /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/water.h
  /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/wave.h
@@ -60,6 +71,10 @@ CMakeFiles/graphics_asgn1.dir/src/rock.cpp.o
  /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
  /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/rock.cpp
  /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/rock.h
+CMakeFiles/graphics_asgn1.dir/src/square.cpp.o
+ /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
+ /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/square.cpp
+ /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/square.h
 CMakeFiles/graphics_asgn1.dir/src/timer.cpp.o
  /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/timer.cpp
  /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/timer.h

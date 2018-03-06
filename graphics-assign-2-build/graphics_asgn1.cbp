@@ -125,7 +125,19 @@
       <Unit filename="/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/flag.h">
          <Option target="graphics_asgn1"/>
       </Unit>
+      <Unit filename="/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/gift.cpp">
+         <Option target="graphics_asgn1"/>
+      </Unit>
+      <Unit filename="/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/gift.h">
+         <Option target="graphics_asgn1"/>
+      </Unit>
       <Unit filename="/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/input.cpp">
+         <Option target="graphics_asgn1"/>
+      </Unit>
+      <Unit filename="/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/island.cpp">
+         <Option target="graphics_asgn1"/>
+      </Unit>
+      <Unit filename="/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/island.h">
          <Option target="graphics_asgn1"/>
       </Unit>
       <Unit filename="/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.cpp">
@@ -150,6 +162,12 @@
          <Option target="graphics_asgn1"/>
       </Unit>
       <Unit filename="/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/rock.h">
+         <Option target="graphics_asgn1"/>
+      </Unit>
+      <Unit filename="/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/square.cpp">
+         <Option target="graphics_asgn1"/>
+      </Unit>
+      <Unit filename="/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/square.h">
          <Option target="graphics_asgn1"/>
       </Unit>
       <Unit filename="/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/timer.cpp">

@@ -1,7 +1,6 @@
+#include "island.h"
 #include "main.h"
-#include "water.h"
-
-Water::Water(float x, float y, float z, float length, float breadth, float height, color_t color)
+Island::Island(float x, float y, float z, float length, float breadth, float height, color_t color)
 {
     this->position = glm::vec3(x, y, 0);
     this->rotation = 0;
@@ -58,11 +57,10 @@ Water::Water(float x, float y, float z, float length, float breadth, float heigh
         breadth/2,length/2,-height/2,
 
     };
-    color = {102,255,255};
     this->object = create3DObject(GL_TRIANGLES, 12*3, vertex_buffer_data, color, GL_FILL);
 }
 
-void Water::draw(glm::mat4 VP) {
+void Island::draw(glm::mat4 VP) {
     Matrices.model = glm::mat4(1.0f);
     glm::mat4 translate = glm::translate (this->position);    // glTranslatef
     glm::mat4 rotate    = glm::rotate((float) (this->rotation * M_PI / 180.0f), glm::vec3(0, 1, 0));
@@ -74,10 +72,10 @@ void Water::draw(glm::mat4 VP) {
     draw3DObject(this->object);
 }
 
-void Water::set_position(float x, float y, float z) {
+void Island::set_position(float x, float y, float z) {
     this->position = glm::vec3(x, y, z);
 //    this->rotation += 1;
 }
-void Water::tick() {
+void Island::tick() {
     this -> rotation += 1;
 }

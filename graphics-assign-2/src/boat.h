@@ -15,6 +15,8 @@ public:
     void tickup();
     void tickdown();
     void tick();
+    int score;
+    double velocity;
     double speed;
     double speedz;
     bounding_box_t bounding_box();

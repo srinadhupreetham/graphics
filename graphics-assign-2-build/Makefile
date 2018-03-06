@@ -312,6 +312,33 @@ src/flag.cpp.s:
 	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/flag.cpp.s
 .PHONY : src/flag.cpp.s
 
+src/gift.o: src/gift.cpp.o
+
+.PHONY : src/gift.o
+
+# target to build an object file
+src/gift.cpp.o:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/gift.cpp.o
+.PHONY : src/gift.cpp.o
+
+src/gift.i: src/gift.cpp.i
+
+.PHONY : src/gift.i
+
+# target to preprocess a source file
+src/gift.cpp.i:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/gift.cpp.i
+.PHONY : src/gift.cpp.i
+
+src/gift.s: src/gift.cpp.s
+
+.PHONY : src/gift.s
+
+# target to generate assembly for a file
+src/gift.cpp.s:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/gift.cpp.s
+.PHONY : src/gift.cpp.s
+
 src/input.o: src/input.cpp.o
 
 .PHONY : src/input.o
@@ -338,6 +365,33 @@ src/input.s: src/input.cpp.s
 src/input.cpp.s:
 	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/input.cpp.s
 .PHONY : src/input.cpp.s
+
+src/island.o: src/island.cpp.o
+
+.PHONY : src/island.o
+
+# target to build an object file
+src/island.cpp.o:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/island.cpp.o
+.PHONY : src/island.cpp.o
+
+src/island.i: src/island.cpp.i
+
+.PHONY : src/island.i
+
+# target to preprocess a source file
+src/island.cpp.i:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/island.cpp.i
+.PHONY : src/island.cpp.i
+
+src/island.s: src/island.cpp.s
+
+.PHONY : src/island.s
+
+# target to generate assembly for a file
+src/island.cpp.s:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/island.cpp.s
+.PHONY : src/island.cpp.s
 
 src/main.o: src/main.cpp.o
 
@@ -473,6 +527,33 @@ src/rock.s: src/rock.cpp.s
 src/rock.cpp.s:
 	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/rock.cpp.s
 .PHONY : src/rock.cpp.s
+
+src/square.o: src/square.cpp.o
+
+.PHONY : src/square.o
+
+# target to build an object file
+src/square.cpp.o:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/square.cpp.o
+.PHONY : src/square.cpp.o
+
+src/square.i: src/square.cpp.i
+
+.PHONY : src/square.i
+
+# target to preprocess a source file
+src/square.cpp.i:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/square.cpp.i
+.PHONY : src/square.cpp.i
+
+src/square.s: src/square.cpp.s
+
+.PHONY : src/square.s
+
+# target to generate assembly for a file
+src/square.cpp.s:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/square.cpp.s
+.PHONY : src/square.cpp.s
 
 src/timer.o: src/timer.cpp.o
 
@@ -612,9 +693,15 @@ help:
 	@echo "... src/flag.o"
 	@echo "... src/flag.i"
 	@echo "... src/flag.s"
+	@echo "... src/gift.o"
+	@echo "... src/gift.i"
+	@echo "... src/gift.s"
 	@echo "... src/input.o"
 	@echo "... src/input.i"
 	@echo "... src/input.s"
+	@echo "... src/island.o"
+	@echo "... src/island.i"
+	@echo "... src/island.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
@@ -630,6 +717,9 @@ help:
 	@echo "... src/rock.o"
 	@echo "... src/rock.i"
 	@echo "... src/rock.s"
+	@echo "... src/square.o"
+	@echo "... src/square.i"
+	@echo "... src/square.s"
 	@echo "... src/timer.o"
 	@echo "... src/timer.i"
 	@echo "... src/timer.s"

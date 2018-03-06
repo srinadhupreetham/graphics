@@ -70,6 +70,16 @@ main.h
 main.h
 /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
 
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/gift.cpp
+gift.h
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/gift.h
+main.h
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
+
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/gift.h
+main.h
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
+
 /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/input.cpp
 iostream
 -
@@ -89,6 +99,16 @@ glm/gtx/transform.hpp
 -
 glm/gtc/matrix_transform.hpp
 -
+main.h
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
+
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/island.cpp
+island.h
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/island.h
+main.h
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
+
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/island.h
 main.h
 /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
 
@@ -121,6 +141,12 @@ monster.h
 /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/monster.h
 boss.h
 /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/boss.h
+gift.h
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/gift.h
+island.h
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/island.h
+square.h
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/square.h
 
 /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
 iostream
@@ -203,6 +229,16 @@ main.h
 /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
 
 /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/rock.h
+main.h
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
+
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/square.cpp
+square.h
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/square.h
+main.h
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
+
+/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/square.h
 main.h
 /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
 

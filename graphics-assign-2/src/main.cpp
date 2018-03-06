@@ -12,6 +12,9 @@
 #include "wind_pointer.h"
 #include "monster.h"
 #include "boss.h"
+#include "gift.h"
+#include "island.h"
+#include "square.h"
 using namespace std;
 
 GLMatrices Matrices;
@@ -32,6 +35,10 @@ Wave wave1,wave2;
 Wind_pointer point;
 Monster monster[20];
 Flag flag;
+Island island;
+Gift gift[20];
+Gift huge_gift;
+Square square[2500];
 float orient;
 Boss boss;
 int windcount=0;
@@ -45,7 +52,7 @@ int count =0;
 int jumpcount = 0;
 double speed =0.4;
 float x_rand,y_rand,x_rand2,y_rand2,x_rand3,y_rand3;
-bool shoot =false;
+bool shoot =false,boost = false;
 float screen_zoom = 1, screen_center_x = 0, screen_center_y = 0;
 float camera_rotation_angle = 0;
 int space1;
@@ -54,7 +61,7 @@ int j;
 double xin,yin,xout,yout;
 int mouse_count = 1;
 int cam=0;
-float wind_dir=0.0f;
+float wind_dir=0.0f,distance=0.1;
 //float distance = 0.3;
 int boostcount=0;
 Rock rock[50];
@@ -151,6 +158,7 @@ void draw() {
     }
 //    ball1.draw(VP);
     water1.draw(VP);
+    island.draw(VP);
      wave1.draw(VP);
      wave2.draw(VP);
     boat1.draw(VP);
@@ -172,8 +180,19 @@ void draw() {
         bonus_ball[j].draw(VP);
         booster[j].draw(VP);
         monster[j].draw(VP);
+        gift[j].draw(VP);
     }
     boss.draw(VP);
+//    for(j=0;j<1;j++){
+//        if(j%2==0){
+//            square[j].set_position(50,50,-1);
+//            square[j].draw(VP);
+//        }
+//    }
+//    square.draw(VP);
+    for(j=0;j<2500;j++){
+        square[j].draw(VP);
+    }
 }
 
 void jump(){
@@ -286,47 +305,47 @@ void tick_input(GLFWwindow *window) {
         }
     }
     if (up) {
-        float distance = 0.1;
-        if(boostcount > 80 && boostcount <120)
-        {
-           distance = 0.4;
-        }
-        else if (boostcount > 120)
-        {
-            distance = 0.4;
-            boostcount = 0;
-        }
-        else
-            distance = 0.4;
+//        float distance = 0.1;
+//        if(boostcount > 80 && boostcount <120)
+//        {
+//           distance = 0.4;
+//        }
+//        else if (boostcount > 120)
+//        {
+//            distance = 0.4;
+//            boostcount = 0;
+//        }
+//        else
+//            distance = 0.4;
 
-        boat1.position.y += distance*cos(boat1.rotation * M_PI/180.0f);
+        boat1.position.y += boat1.velocity*cos(boat1.rotation * M_PI/180.0f);
         flag.position.y = boat1.position.y;
         cannon1.position.y = boat1.position.y;
 
-        boat1.position.x -= distance*sin(boat1.rotation * M_PI/180.0f);
+        boat1.position.x -= boat1.velocity*sin(boat1.rotation * M_PI/180.0f);
         flag.position.x = boat1.position.x;
         cannon1.position.x = boat1.position.x;
 
     }
     if (down) {
-        float distance = 0.1;
-        if(boostcount > 80 && boostcount <120)
-        {
-           distance = 0.4;
-        }
-        else if (boostcount > 120)
-        {
-            distance = 0.4;
-            boostcount = 0;
-        }
-        else
-            distance = 0.4;
+//        float distance = 0.1;
+//        if(boostcount > 80 && boostcount <120)
+//        {
+//           distance = 0.4;
+//        }
+//        else if (boostcount > 120)
+//        {
+//            distance = 0.4;
+//            boostcount = 0;
+//        }
+//        else
+//            distance = 0.4;
 
-        boat1.position.y -= distance*cos(boat1.rotation * M_PI/180.0f);
+        boat1.position.y -= boat1.velocity*cos(boat1.rotation * M_PI/180.0f);
         flag.position.y = boat1.position.y;
         cannon1.position.y = boat1.position.y;
 
-        boat1.position.x += distance*sin(boat1.rotation * M_PI/180.0f);
+        boat1.position.x += boat1.velocity*sin(boat1.rotation * M_PI/180.0f);
         flag.position.x = boat1.position.x;
         cannon1.position.x = boat1.position.x;
 
@@ -337,23 +356,23 @@ void tick_elements() {
     orient = atan2(boss.position.y - boat1.position.y, boss.position.x - boat1.position.x);
     boss.position.x -= 0.1*(cos(orient));
     boss.position.y -= 0.1*(sin(orient));
-    boat1.position.x -= 0.005*(sin(wind_dir*M_PI/180.0));
-    boat1.position.y += 0.005*(cos(wind_dir*M_PI/180.0));
+//    boat1.position.x -= 0.005*(sin(wind_dir*M_PI/180.0));
+//    boat1.position.y += 0.005*(cos(wind_dir*M_PI/180.0));
     flag.position.x = boat1.position.x;
     flag.position.y = boat1.position.y;
     cannon1.position.x = boat1.position.x;
     cannon1.position.y = boat1.position.y;
-   if((int(boat1.rotation)%180 - int(wind_dir)%180 ) !=90)
-    {
-//       if(boat1.rotation < int(wind_dir)){
-         boat1.rotation += 0.1;
+//    if((int(boat1.rotation)%180 - int(wind_dir)%180 ) !=90)
+//     {
+// //       if(boat1.rotation < int(wind_dir)){
+//          boat1.rotation += 0.1;
+// //    }
+// //    else
+// //        boat1.rotation -= 0.1;
 //    }
-//    else
-//        boat1.rotation -= 0.1;
-   }
-//    cannon1.rotation = boat1.rotation;
-    flag.rotation = boat1.rotation;
-    point.rotation = -wind_dir;
+ //    cannon1.rotation = boat1.rotation;
+     flag.rotation = boat1.rotation;
+     point.rotation = -wind_dir;
     point.position.x = boat1.position.x + 8*sin(boat1.rotation*M_PI/180.0);
     point.position.y = boat1.position.y - 8*cos(boat1.rotation*M_PI/180.0);
     if((int(wind_dir)%360)-(int(boat1.rotation)%360) < 180){
@@ -382,6 +401,7 @@ void tick_elements() {
             else
                 boat1.position.y += 2;
             boat1.position.z = 2;
+            boat1.health -= 10;
 
         }
     }
@@ -448,16 +468,40 @@ void tick_elements() {
     {
         count = 0;
     }
+    for(j=0;j<20;j++){
+        if(((booster[j].position.x) < (boat1.position.x + 2)) && ((booster[j].position.x) > (boat1.position.x - 2)) && ((booster[j].position.y) < (boat1.position.y + 4)) && ((booster[j].position.y) > (boat1.position.y - 4))){
+//            printf("DONEndnflksndlv");
+//            boat1.position.z += 2;
+            booster[j].position.x = RandomFloat(-200,200);
+            booster[j].position.y = RandomFloat(-200,200);
+            boat1.velocity = 0.6;
+            boost = true;
+        }
+        if(boostcount > 100){
+            boostcount=0;
+            boat1.velocity = 0.3;
+            boost = false;
+        }
+        if(((gift[j].position.x) < (boat1.position.x + 2)) && ((gift[j].position.x) > (boat1.position.x - 2)) && ((gift[j].position.y) < (boat1.position.y + 4)) && ((gift[j].position.y) > (boat1.position.y - 4))){
+//            printf("DONEndnflksndlv");
+            gift[j].position.x = RandomFloat(-200,200);
+            gift[j].position.y = RandomFloat(-200,200);
+            boat1.score += 10;
+        }
+    }
+    if(boost){
+        boostcount+=1;
+    }
     wave1.tick();
     wave2.tick();
     camera_rotation_angle += 1;
-    boostcount += 1;
     for(j=0;j<20;j++){
         bonus_ball[j].rotation += 10;
         booster[j].rotation+=10;
         if(bonus_ball[j].rotation > 100){
             bonus_ball[j].rotation = 0;
         }
+        gift[j].tick();
     }
     if(windcount %30000 == 0)
     {
@@ -510,7 +554,9 @@ void initGL(GLFWwindow *window, int width, int height) {
     // Create the models
 
 
-    water1      = Water(0,0,-2,1000,500,1,COLOR_BLUE);
+    water1      = Water(0,0,-2,500,500,1,COLOR_BLUE);
+    island      = Island(0,1000,2,1000,500,5,COLOR_BROWN);
+    huge_gift   = Gift(0,1020,8,COLOR_GREEN);
     boat1       = Boat(0,0,2,8,2,1,COLOR_GREEN);
     cannon1     = Cannon(boat1.position.x,boat1.position.y,boat1.position.z+2,0.2,2,3);
     ball1       = Ball(cannon1.position.x, cannon1.position.y, cannon1.position.z, COLOR_RED);
@@ -524,7 +570,7 @@ void initGL(GLFWwindow *window, int width, int height) {
     target_z=boat1.position.z;
     eye_x = boat1.position.x -(3*sin(-boat1.rotation*M_PI/180.0));
     eye_y = boat1.position.y -(3*cos(-boat1.rotation*M_PI/180.0));
-    boat1.health = 1000;
+    boat1.health = 100;
     eye_z = 4;
     boss        = Boss(1000,1000,0,COLOR_BASETOP);
     for (j=0;j<50;j++)
@@ -560,7 +606,16 @@ void initGL(GLFWwindow *window, int width, int height) {
         barrel[j] = Barrel(x_rand,y_rand,0,0.75,6,2);
         bonus_ball[j] =Ball(x_rand,y_rand,6.5,COLOR_RED);
         monster[j] =Monster(x_rand3,y_rand3,2,COLOR_DOM);
+        gift[j] = Gift(x_rand2+x_rand3,y_rand2+y_rand3,3,COLOR_BLACK);
     }
+    for(j=0;j<2500;j++){
+//        if((j/50)%2==0)
+//        square[j] = Square((j%50)*10 - 250,(j/50)*10 -250,-1,5,COLOR_BLACK);
+//        else
+            square[j] = Square((j%50)*10 - 250+5,(j/50)*10 -250,0.55,10,COLOR_BLACK);
+//        square[j] = Square(3,4,-1,2,COLOR_BLACK);
+    }
+//    square = Square(5,5,0.55,5,COLOR_BLACK);
     // Create and compile our GLSL program from the shaders
     programID = LoadShaders("Sample_GL.vert", "Sample_GL.frag");
     // Get a handle for our "MVP" uniform
@@ -605,6 +660,9 @@ int main(int argc, char **argv) {
 
             tick_elements();
             tick_input(window);
+            if(boat1.health < 0){
+                break;
+            }
         }
 
         // Poll for Keyboard and mouse events
