@@ -356,21 +356,21 @@ void tick_elements() {
     orient = atan2(boss.position.y - boat1.position.y, boss.position.x - boat1.position.x);
     boss.position.x -= 0.1*(cos(orient));
     boss.position.y -= 0.1*(sin(orient));
-//    boat1.position.x -= 0.005*(sin(wind_dir*M_PI/180.0));
-//    boat1.position.y += 0.005*(cos(wind_dir*M_PI/180.0));
+    boat1.position.x -= 0.005*(sin(wind_dir*M_PI/180.0));
+    boat1.position.y += 0.005*(cos(wind_dir*M_PI/180.0));
     flag.position.x = boat1.position.x;
     flag.position.y = boat1.position.y;
     cannon1.position.x = boat1.position.x;
     cannon1.position.y = boat1.position.y;
-//    if((int(boat1.rotation)%180 - int(wind_dir)%180 ) !=90)
-//     {
-// //       if(boat1.rotation < int(wind_dir)){
-//          boat1.rotation += 0.1;
-// //    }
-// //    else
-// //        boat1.rotation -= 0.1;
-//    }
- //    cannon1.rotation = boat1.rotation;
+    if((int(boat1.rotation)%180 - int(wind_dir)%180 ) !=90)
+     {
+ //       if(boat1.rotation < int(wind_dir)){
+          boat1.rotation += 0.1;
+ //    }
+ //    else
+ //        boat1.rotation -= 0.1;
+    }
+     cannon1.rotation = boat1.rotation;
      flag.rotation = boat1.rotation;
      point.rotation = -wind_dir;
     point.position.x = boat1.position.x + 8*sin(boat1.rotation*M_PI/180.0);
@@ -534,16 +534,51 @@ void tick_elements() {
     }
     for(j=0;j<20;j++)
     {
-        monster[j].position.x += /*RandomFloat(0.3,1.0)*/0.3*cos(angle[j]*M_PI/180.0);
-        monster[j].position.y += /*RandomFloat(0.4,1.0*/0.3*sin(angle[j]*M_PI/180.0);
-        if (monster[j].position.x > 100 ||monster[j].position.x < -100){
-            monster[j].position.x = 80;
+        if(detect_collision_enemy(boat1.bounding_box(),monster[j].bounding_box()))
+           {
+                boat1.health -= 5;
+                monster[j].position.x += 50;
+                monster[j].position.y += 50;
+//            printf("kdbfkebigb");
         }
-        if (monster[j].position.y > 200 ||monster[j].position.y < -200){
-            monster[j].position.y = 180;
+        else{
+            monster[j].position.x += /*RandomFloat(0.3,1.0)*/0.3*cos(angle[j]*M_PI/180.0);
+            monster[j].position.y += /*RandomFloat(0.4,1.0*/0.3*sin(angle[j]*M_PI/180.0);
+            if (monster[j].position.x > 300 ||monster[j].position.x < -300){
+                monster[j].position.x = 80;
+            }
+            if (monster[j].position.y > 300 ||monster[j].position.y < -300){
+                monster[j].position.y = 180;
+            }
+        }
+        if(abs(ball1.position.x -monster[j].position.x) < 1.0 && abs(ball1.position.y - monster[j].position.y)<1.0)
+        {
+            printf("sbdjvbsndlvnl;sdlvnlsdnl;vl;sdl;vnl;sdhvlskdnvl.sl");
+            ball1.position.x = boat1.position.x;
+            ball1.position.y = boat1.position.y;
+            monster[j].position.x += 50;
+            monster[j].position.y += 50;
+            boat1.score += 10;
+            shoot = false;
         }
 
     }
+    if(detect_collision_enemy(boat1.bounding_box(),boss.bounding_box())){
+        boat1.health -=  10;
+        printf("done");
+    }
+    if(abs(ball1.position.x -boss.position.x) < 2.0 && abs(ball1.position.y - boss.position.y)<2.000)
+    {
+//        printf("sbdjvbsndlvnl;sdlvnlsdnl;vl;sdl;vnl;sdhvlskdnvl.sl");
+        boss.health -= 10;
+        boat1.score += 20;
+        ball1.position.x = boat1.position.x;
+        ball1.position.y = boat1.position.y;
+        shoot = false;
+    }
+//    if(abs(boss.position.x - boat1.position.x) < 0.2 && abs(boss.position.y - boat1.position.y)<0.2 ){
+//        boat1.health -= 10;
+//    }
     changecount += 1;
 }
 
@@ -572,7 +607,7 @@ void initGL(GLFWwindow *window, int width, int height) {
     eye_y = boat1.position.y -(3*cos(-boat1.rotation*M_PI/180.0));
     boat1.health = 100;
     eye_z = 4;
-    boss        = Boss(1000,1000,0,COLOR_BASETOP);
+    boss        = Boss(100,100,12,COLOR_BASETOP);
     for (j=0;j<50;j++)
     {
         if (j%2 == 0){
@@ -605,7 +640,7 @@ void initGL(GLFWwindow *window, int width, int height) {
         booster[j] = Ball(x_rand+x_rand2,y_rand+y_rand2,1.5,COLOR_GREEN);
         barrel[j] = Barrel(x_rand,y_rand,0,0.75,6,2);
         bonus_ball[j] =Ball(x_rand,y_rand,6.5,COLOR_RED);
-        monster[j] =Monster(x_rand3,y_rand3,2,COLOR_DOM);
+        monster[j] =Monster(x_rand3,y_rand3,4,COLOR_DOM);
         gift[j] = Gift(x_rand2+x_rand3,y_rand2+y_rand3,3,COLOR_BLACK);
     }
     for(j=0;j<2500;j++){
@@ -677,6 +712,10 @@ bool detect_collision_rock(bounding_box_t a, bounding_box_t b) {
            (abs(a.y - b.y) * 2 < (a.length + b.length)) && (abs(a.z - b.z)*2 <= (a.height+b.height));
 }
 bool detect_collision_bonus(bounding_box_t a, bounding_box_t b) {
+    return (abs(a.x - b.x) * 2 < (a.width + b.width)) &&
+           (abs(a.y - b.y) * 2 < (a.length + b.length)) && (abs(a.z - b.z)*2 <= (a.height+b.height));
+}
+bool detect_collision_enemy(bounding_box_t a, bounding_box_t b) {
     return (abs(a.x - b.x) * 2 < (a.width + b.width)) &&
            (abs(a.y - b.y) * 2 < (a.length + b.length)) && (abs(a.z - b.z)*2 <= (a.height+b.height));
 }

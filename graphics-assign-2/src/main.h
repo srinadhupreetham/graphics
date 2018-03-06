@@ -76,6 +76,7 @@ void jump();
 bool detect_collision(bounding_box_t a, bounding_box_t b);
 bool detect_collision_rock(bounding_box_t a, bounding_box_t b);
 bool detect_collision_bonus(bounding_box_t a, bounding_box_t b);
+bool detect_collision_enemy(bounding_box_t a, bounding_box_t b);
 
 extern float screen_zoom, screen_center_x, screen_center_y;
 void reset_screen();
