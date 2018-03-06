@@ -15,6 +15,7 @@
 #include "gift.h"
 #include "island.h"
 #include "square.h"
+#include <sstream>
 using namespace std;
 
 GLMatrices Matrices;
@@ -173,7 +174,7 @@ void draw() {
     boat1.draw(VP);
     point.draw(VP);
     cannon1.position.z = boat1.position.z+2;
-
+    huge_gift.draw(VP);
     flag.position.z = boat1.position.z+4;
 
     cannon1.draw(VP);
@@ -205,7 +206,7 @@ void draw() {
     if(human.active){
         human.draw(VP);
         cam = 8;
-        printf("landed");
+//        printf("landed");
     }
 }
 
@@ -241,7 +242,7 @@ void tick_input(GLFWwindow *window) {
         human.active = true;
         human.position.x =boat1.position.x;
         human.position.y =250;
-        human.position.z = boat1.position.z;
+        human.position.z = boat1.position.z+3;
         printf("ekkadu");
     }
 //    if(human.active && abs(human.position.x - boat1.position.x) <10 && abs(human.position.y - boat1.position.y) < 10){
@@ -406,12 +407,19 @@ void tick_elements() {
     orient = atan2(boss.position.y - boat1.position.y, boss.position.x - boat1.position.x);
     boss.position.x -= 0.1*(cos(orient));
     boss.position.y -= 0.1*(sin(orient));
+    boss.rotation += 5;
     boat1.position.x -= 0.005*(sin(wind_dir*M_PI/180.0));
     boat1.position.y += 0.005*(cos(wind_dir*M_PI/180.0));
     flag.position.x = boat1.position.x;
     flag.position.y = boat1.position.y;
     cannon1.position.x = boat1.position.x;
     cannon1.position.y = boat1.position.y;
+    if(human.active && abs(human.position.y - huge_gift.position.y)<1 && abs(human.position.x - huge_gift.position.x)<1) {
+        boat1.score += 100;
+        boat1.health += 100;
+        huge_gift.position.y += 20;
+        huge_gift.position.x += 20;
+    }
     if((int(boat1.rotation)%180 - int(wind_dir)%180 ) !=90)
      {
  //       if(boat1.rotation < int(wind_dir)){
@@ -605,15 +613,19 @@ void tick_elements() {
             if (monster[j].position.y > 300 ||monster[j].position.y < -300){
                 monster[j].position.y = 180;
             }
+            monster[j].rotation += 5;
         }
         if(abs(ball1.position.x -monster[j].position.x) < 1.0 && abs(ball1.position.y - monster[j].position.y)<1.0)
         {
             printf("sbdjvbsndlvnl;sdlvnlsdnl;vl;sdl;vnl;sdhvlskdnvl.sl");
+            gift[j].position.x = monster[j].position.x;
+            gift[j].position.y = monster[j].position.y;
             ball1.position.x = boat1.position.x;
             ball1.position.y = boat1.position.y;
             monster[j].position.x += 50;
             monster[j].position.y += 50;
             boat1.score += 10;
+
             shoot = false;
         }
 
@@ -629,6 +641,9 @@ void tick_elements() {
         boat1.score += 20;
         ball1.position.x = boat1.position.x;
         ball1.position.y = boat1.position.y;
+        if(boss.health < 0){
+            printf("game won");
+        }
         shoot = false;
     }
 //    if(abs(boss.position.x - boat1.position.x) < 0.2 && abs(boss.position.y - boat1.position.y)<0.2 ){
@@ -646,7 +661,7 @@ void initGL(GLFWwindow *window, int width, int height) {
 
     water1      = Water(0,0,-2,500,500,1,COLOR_BLUE);
     island      = Island(0,750,-2,1000,500,1,COLOR_BROWN);
-    huge_gift   = Gift(0,1020,8,COLOR_GREEN);
+    huge_gift   = Gift(0,260,3,COLOR_GREEN);
     boat1       = Boat(0,0,2,8,2,1,COLOR_GREEN);
     cannon1     = Cannon(boat1.position.x,boat1.position.y,boat1.position.z+2,0.2,2,3);
     ball1       = Ball(cannon1.position.x, cannon1.position.y, cannon1.position.z, COLOR_RED);
@@ -661,9 +676,10 @@ void initGL(GLFWwindow *window, int width, int height) {
     eye_x = boat1.position.x -(3*sin(-boat1.rotation*M_PI/180.0));
     eye_y = boat1.position.y -(3*cos(-boat1.rotation*M_PI/180.0));
     boat1.health = 100;
+    boat1.score = 0;
     eye_z = 4;
 
-    human =Monster(boat1.position.x,boat1.position.y,boat1.position.z+4,COLOR_BACKGROUND);
+    human =Monster(boat1.position.x,boat1.position.y,boat1.position.z+10,COLOR_BACKGROUND);
     human.active = false;
     boss        = Boss(300,300,12,COLOR_BASETOP);
     for (j=0;j<50;j++)
@@ -747,6 +763,22 @@ int main(int argc, char **argv) {
         if (t60.processTick()) {
             // 60 fps
             // OpenGL Draw commands
+                    string Result;
+                                stringstream convert;
+                                //cout << "nonedit score:" << score << endl;
+                                convert << boat1.score;
+                                Result = convert.str();
+
+                                const char *one = "Score ";
+                                const char *two = Result.c_str();
+                                const char *three = "   Health ";
+                                string Result1;
+                                stringstream convert1;
+                                convert1 << boat1.health;
+                                Result1 = convert1.str();
+                                const char *four = Result1.c_str();
+                                string total( string(one) + two + string(three) + four);
+                                glfwSetWindowTitle(window, total.c_str());
             draw();
             // Swap Frame Buffer in double buffering
             glfwSwapBuffers(window);

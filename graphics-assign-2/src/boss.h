@@ -19,6 +19,8 @@ public:
     bounding_box_t bounding_box();
 private:
     VAO *object;
+    VAO * object1;
+    VAO * object2;
     VAO *barrel1;
     VAO *barrel2;
 };

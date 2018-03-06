@@ -60,6 +60,106 @@ Monster::Monster(float x, float y,float z, color_t color)
         -w,-l,-hf,
         -w,l,-hn
     };
+    hf /= 2;
+    hn /= 2;
+    static const GLfloat vertex_buffer_datar[] = {
+        w+2*w,l,-hn-1,
+        -w+2*w,l,-hn-1,
+        w+2*w,-l,-hn-1,
+
+        -w+2*w,l,-hn-1,
+        w+2*w,-l,-hn-1,
+        -w+2*w,-l,-hn-1,
+        //base top
+        w+2*w,l,-hf-1,
+        -w+2*w,l,-hf-1,
+        w+2*w,-l,-hf-1,
+
+        -w+2*w,l,-hf-1,
+        w+2*w,-l,-hf-1,
+        -w+2*w,-l,-hf-1,
+        //end of bottom face
+        w+2*w,l,-hf-1,
+        -w+2*w,l,-hf-1,
+        w+2*w,l,-hn-1,
+
+        -w+2*w,l,-hn-1,
+        -w+2*w,l,-hf-1,
+        w+2*w,l,-hn-1,
+        //end of back face
+        w+2*w,-l,-hf-1,
+        -w+2*w,-l,-hf-1,
+        w+2*w,-l,-hn-1,
+
+        -w+2*w,-l,-hn-1,
+        -w+2*w,-l,-hf-1,
+        w+2*w,-l,-hn-1,
+        //end of front face
+        w+2*w,l,-hf-1,
+        w+2*w,-l,-hf-1,
+        w+2*w,l,-hn-1,
+
+        w+2*w,-l,-hn-1,
+        w+2*w,-l,-hf-1,
+        w+2*w,l,-hn-1,
+        //end of right face
+        -w+2*w,l,-hf-1,
+        -w+2*w,-l,-hf-1,
+        -w+2*w,l,-hn-1,
+
+        -w+2*w,-l,-hn-1,
+        -w+2*w,-l,-hf-1,
+        -w+2*w,l,-hn-1
+    };
+    static const GLfloat vertex_buffer_datal[] = {
+        w-2*w,l,-hn-1,
+        -w-2*w,l,-hn-1,
+        w-2*w,-l,-hn-1,
+
+        -w-2*w,l,-hn-1,
+        w-2*w,-l,-hn-1,
+        -w-2*w,-l,-hn-1,
+        //base top
+        w-2*w,l,-hf-1,
+        -w-2*w,l,-hf-1,
+        w-2*w,-l,-hf-1,
+
+        -w-2*w,l,-hf-1,
+        w-2*w,-l,-hf-1,
+        -w-2*w,-l,-hf-1,
+        //end of bottom face
+        w-2*w,l,-hf-1,
+        -w-2*w,l,-hf-1,
+        w-2*w,l,-hn-1,
+
+        -w-2*w,l,-hn-1,
+        -w-2*w,l,-hf-1,
+        w-2*w,l,-hn-1,
+        //end of back face
+        w-2*w,-l,-hf-1,
+        -w-2*w,-l,-hf-1,
+        w-2*w,-l,-hn-1,
+
+        -w-2*w,-l,-hn-1,
+        -w-2*w,-l,-hf-1,
+        w-2*w,-l,-hn-1,
+        //end of front face
+        w-2*w,l,-hf-1,
+        w-2*w,-l,-hf-1,
+        w-2*w,l,-hn-1,
+
+        w-2*w,-l,-hn-1,
+        w-2*w,-l,-hf-1,
+        w-2*w,l,-hn-1,
+        //end of right face
+        -w-2*w,l,-hf-1,
+        -w-2*w,-l,-hf-1,
+        -w-2*w,l,-hn-1,
+
+        -w-2*w,-l,-hn-1,
+        -w-2*w,-l,-hf-1,
+        -w-2*w,l,-hn-1
+    };
     float radius = 0.75;
     this->radius = radius;
     float length = -6;
@@ -141,6 +241,8 @@ Monster::Monster(float x, float y,float z, color_t color)
                    }
     GLfloat color_buffer_data[] ={};
     this->object = create3DObject(GL_TRIANGLES, 12*3, vertex_buffer_data, color_buffer_data, GL_FILL);
+    this->object1 = create3DObject(GL_TRIANGLES, 12*3, vertex_buffer_datar, COLOR_GREEN, GL_FILL);
+    this->object2 = create3DObject(GL_TRIANGLES, 12*3, vertex_buffer_datal, COLOR_GREEN, GL_FILL);
     this->barrel1 = create3DObject(GL_TRIANGLES, 240*9, vertex_buffer_data_1, color_buffer_data, GL_FILL);
             this->barrel2 = create3DObject(GL_TRIANGLES, 240*9, vertex_buffer_data_2,color_buffer_data, GL_FILL);
 }
@@ -155,6 +257,8 @@ void Monster::draw(glm::mat4 VP) {
     glm::mat4 MVP = VP * Matrices.model;
     glUniformMatrix4fv(Matrices.MatrixID, 1, GL_FALSE, &MVP[0][0]);
     draw3DObject(this->object);
+    draw3DObject(this->object1);
+    draw3DObject(this->object2);
     draw3DObject(this->barrel1);
     draw3DObject(this->barrel2);
 }

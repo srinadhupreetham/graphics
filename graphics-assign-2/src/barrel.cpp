@@ -95,7 +95,7 @@ Barrel::Barrel(float x,float y,float z, float radius,float length,float back)
                                  vertex_buffer_data3[9*i+2] = 0.0;
 
                                  vertex_buffer_data3[9*i+3] = 0.0;
-                                 vertex_buffer_data3[9*i+4] = 0.0;
+                                 vertex_buffer_data3[9*i+4] = 0.5;
                                  vertex_buffer_data3[9*i+5] = 0.0;
 
 
@@ -104,7 +104,7 @@ Barrel::Barrel(float x,float y,float z, float radius,float length,float back)
                                 vertex_buffer_data3[9*i+8] = 0.0;}
                                 if(i%2==1){
                                  vertex_buffer_data3[9*i] = 0.0;
-                                 vertex_buffer_data3[9*i+1] = 0.0;
+                                 vertex_buffer_data3[9*i+1] = 0.5;
                                  vertex_buffer_data3[9*i+2] = 0.0;
 
                                  vertex_buffer_data3[9*i+3] = 0.5;
