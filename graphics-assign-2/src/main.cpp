@@ -29,23 +29,24 @@ GLFWwindow *window;
 Ball ball1;
 Water water1;
 Boat boat1;
-Ball bonus_ball[20],booster[20];
-Barrel barrel[20];
+Ball bonus_ball[40],booster[40];
+Barrel barrel[40];
 Cannon cannon1;
-Wave wave1,wave2;
+//Wave wave1,wave2;
+Wave wave[20];
 Wind_pointer point;
-Monster monster[20];
+Monster monster[40];
 Monster human;
 Flag flag;
 Island island;
-Gift gift[20];
+Gift gift[40];
 Gift huge_gift;
 Square square[2500];
 float orient;
 Boss boss;
 int windcount=0;
 int d=0,t=0;
-float angle[20];
+float angle[40];
 int changecount=0;
 float eye_x,eye_y,eye_z,target_x,target_y,target_z;
 float pan = 0.0f;
@@ -66,7 +67,7 @@ int cam=0;
 float wind_dir=0.0f,distance=0.1;
 //float distance = 0.3;
 int boostcount=0;
-Rock rock[50];
+Rock rock[100];
 Timer t60(1.0 / 60);
 float RandomFloat(float a, float b) {
     float random = ((float) rand()) / (float) RAND_MAX;
@@ -169,8 +170,11 @@ void draw() {
 //    ball1.draw(VP);
     water1.draw(VP);
     island.draw(VP);
-     wave1.draw(VP);
-     wave2.draw(VP);
+//     wave1.draw(VP);
+//     wave2.draw(VP);
+    for(j=0;j<20;j++){
+        wave[j].draw(VP);
+    }
     boat1.draw(VP);
     point.draw(VP);
     cannon1.position.z = boat1.position.z+2;
@@ -180,11 +184,11 @@ void draw() {
     cannon1.draw(VP);
 
     flag.draw(VP);
-    for (j=0;j<50;j++)
+    for (j=0;j<100;j++)
     {
         rock[j].draw(VP);
     }
-    for (j=0;j<20;j++)
+    for (j=0;j<40;j++)
     {
         barrel[j].draw(VP);
         bonus_ball[j].draw(VP);
@@ -444,7 +448,7 @@ void tick_elements() {
         human.position.y = boat1.position.y;
         human.position.z = boat1.position.z;
     }
-    for(j=0;j<50;j++){
+    for(j=0;j<100;j++){
         if(detect_collision_rock(boat1.bounding_box(),rock[j].bounding_box()))
         {
 //            printf("working HUrrah");
@@ -468,7 +472,7 @@ void tick_elements() {
 
         }
     }
-    for(j=0;j<20;j++){
+    for(j=0;j<40;j++){
         if(detect_collision_bonus(boat1.bounding_box(),barrel[j].bounding_box()))
         {
 //            if(boat1.position.x < barrel[j].position.x)
@@ -495,9 +499,11 @@ void tick_elements() {
     if(count > 40)
     {
         boat1.tickup();
-        wave1.tickup();
-        wave2.tickup();
         for(j=0;j<20;j++)
+       {/* wave1.tickup();*/
+//        wave2.tickup();
+        wave[j].tickup();}
+        for(j=0;j<40;j++)
         {
             bonus_ball[j].tickup();
             barrel[j].tickup();
@@ -505,9 +511,11 @@ void tick_elements() {
     }
     else{
          boat1.tickdown();
-        wave1.tickdown();
-        wave2.tickdown();
-        for(j=0;j<20;j++)
+         for(j=0;j<20;j++){
+//        wave1.tickdown();
+//        wave2.tickdown();
+        wave[j].tickdown();}
+        for(j=0;j<40;j++)
         {
             bonus_ball[j].tickdown();
             barrel[j].tickdown();
@@ -531,7 +539,7 @@ void tick_elements() {
     {
         count = 0;
     }
-    for(j=0;j<20;j++){
+    for(j=0;j<40;j++){
         if(((booster[j].position.x) < (boat1.position.x + 2)) && ((booster[j].position.x) > (boat1.position.x - 2)) && ((booster[j].position.y) < (boat1.position.y + 4)) && ((booster[j].position.y) > (boat1.position.y - 4))){
 //            printf("DONEndnflksndlv");
 //            boat1.position.z += 2;
@@ -555,10 +563,13 @@ void tick_elements() {
     if(boost){
         boostcount+=1;
     }
-    wave1.tick();
-    wave2.tick();
-    camera_rotation_angle += 1;
+//    wave1.tick();
+//    wave2.tick();
     for(j=0;j<20;j++){
+        wave[j].tick();
+    }
+    camera_rotation_angle += 1;
+    for(j=0;j<40;j++){
         bonus_ball[j].rotation += 10;
         booster[j].rotation+=10;
         if(bonus_ball[j].rotation > 100){
@@ -591,11 +602,11 @@ void tick_elements() {
     if(changecount >120)
     {
         changecount =0;
-        for(j=0;j<20;j++){
+        for(j=0;j<40;j++){
             angle[j]=RandomFloat(0,360);
         }
     }
-    for(j=0;j<20;j++)
+    for(j=0;j<40;j++)
     {
         if(detect_collision_enemy(boat1.bounding_box(),monster[j].bounding_box()))
            {
@@ -658,16 +669,23 @@ void initGL(GLFWwindow *window, int width, int height) {
     /* Objects should be created before any other gl function and shaders */
     // Create the models
 
-
+    int sign =1;
     water1      = Water(0,0,-2,500,500,1,COLOR_BLUE);
     island      = Island(0,750,-2,1000,500,1,COLOR_BROWN);
     huge_gift   = Gift(0,260,3,COLOR_GREEN);
     boat1       = Boat(0,0,2,8,2,1,COLOR_GREEN);
     cannon1     = Cannon(boat1.position.x,boat1.position.y,boat1.position.z+2,0.2,2,3);
     ball1       = Ball(cannon1.position.x, cannon1.position.y, cannon1.position.z, COLOR_RED);
-
-    wave1       = Wave(boat1.position.x - 8,boat1.position.y-3,boat1.position.z-2,1.5,10,3);
-    wave2       = Wave(boat1.position.x + 8,boat1.position.y-3,boat1.position.z-2,1.5,10,3);
+    for(j=0;j<20;j++){
+        if(j<10){
+            sign = 1;
+        }
+        else
+            sign = -1;
+//    wave1       = Wave(boat1.position.x - 8,boat1.position.y-3,boat1.position.z-2,1.5,10,3);
+//    wave2       = Wave(boat1.position.x + 8,boat1.position.y-3,boat1.position.z-2,1.5,10,3);
+    wave[j]     = Wave(sign*16*(j%10),boat1.position.y-3,boat1.position.z-2,1.5,10,3);
+    }
     point       =Wind_pointer(boat1.position.x,boat1.position.y,boat1.position.z+1,COLOR_WAVE);
     flag = Flag(boat1.position.x,boat1.position.y,boat1.position.z+4,3,1,1,1,0.0f);
     target_x=boat1.position.x;
@@ -682,30 +700,51 @@ void initGL(GLFWwindow *window, int width, int height) {
     human =Monster(boat1.position.x,boat1.position.y,boat1.position.z+10,COLOR_BACKGROUND);
     human.active = false;
     boss        = Boss(300,300,12,COLOR_BASETOP);
-    for (j=0;j<50;j++)
+    for (j=0;j<100;j++)
     {
-        if (j%2 == 0){
+        if (j%4 == 0){
             x_rand = RandomFloat(4,200) ;
+            y_rand = RandomFloat(4,400) ;
+        }
+        if (j%4 == 1){
+            x_rand = -RandomFloat(4,200) ;
             y_rand = RandomFloat(4,200) ;
         }
-        if (j%2 == 1){
+        if (j%4 == 2){
             x_rand = -RandomFloat(4,200) ;
+            y_rand = -RandomFloat(4,400) ;
+        }
+        if (j%4 == 3){
+            x_rand = RandomFloat(4,200) ;
             y_rand = -RandomFloat(4,200) ;
         }
         rock[j] = Rock(x_rand,y_rand,4,COLOR_BROWN);
     }
-    for(j=0;j<20;j++)
+    for(j=0;j<40;j++)
     {
-        if (j%2 == 0){
+        if (j%4 == 0){
             x_rand = RandomFloat(4,200) ;
             y_rand = RandomFloat(4,200) ;
             x_rand3 = RandomFloat(4,200) ;
             y_rand3 = RandomFloat(4,200) ;
         }
-        if (j%2 == 1){
+        if (j%4 == 1){
+            x_rand = -RandomFloat(4,200) ;
+            y_rand = RandomFloat(4,200) ;
+            x_rand3 = -RandomFloat(4,200) ;
+            y_rand3 = RandomFloat(4,200) ;
+
+        }
+        if (j%4 == 2){
             x_rand = -RandomFloat(4,200) ;
             y_rand = -RandomFloat(4,200) ;
             x_rand3 = -RandomFloat(4,200) ;
+            y_rand3 = -RandomFloat(4,200) ;
+        }
+        if (j%4 == 3){
+            x_rand = RandomFloat(4,200) ;
+            y_rand = -RandomFloat(4,200) ;
+            x_rand3 = RandomFloat(4,200) ;
             y_rand3 = -RandomFloat(4,200) ;
 
         }
