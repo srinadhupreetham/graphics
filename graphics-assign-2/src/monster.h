@@ -16,6 +16,7 @@ public:
     double speed;
     float angle;
     int health;
+    int active;
     bounding_box_t bounding_box();
 private:
     VAO *object;

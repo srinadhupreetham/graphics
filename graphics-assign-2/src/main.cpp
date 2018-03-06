@@ -135,6 +135,14 @@ void draw() {
         eye_y = 5;
         eye_z = 50;
     }
+    else if(cam==8){
+        target_x = human.position.x ;
+        target_y = human.position.y;
+        target_z = human.position.z;
+        eye_x = human.position.x ;
+        eye_y = human.position.y - 10;
+        eye_z = 15;
+    }
     glm::vec3 eye(eye_x,eye_y,eye_z);
     glm::vec3 target(target_x,target_y,target_z);
     glm::vec3 up(0,0,1);
@@ -194,6 +202,11 @@ void draw() {
     for(j=0;j<2500;j++){
         square[j].draw(VP);
     }
+    if(human.active){
+        human.draw(VP);
+        cam = 8;
+        printf("landed");
+    }
 }
 
 void jump(){
@@ -218,7 +231,41 @@ void tick_input(GLFWwindow *window) {
     int T = glfwGetKey(window, GLFW_KEY_5);
     int L = glfwGetKey(window, GLFW_KEY_0);
     int land = glfwGetKey(window, GLFW_KEY_L);
-//    if(land && boat1.position.y)
+    int boath = glfwGetKey(window, GLFW_KEY_R);
+    int front = glfwGetKey(window, GLFW_KEY_W);
+    int lefth = glfwGetKey(window, GLFW_KEY_A);
+    int righth = glfwGetKey(window, GLFW_KEY_D);
+    int back = glfwGetKey(window, GLFW_KEY_S);
+    if(land && (boat1.position.y > 240) && boat1.position.y < 250){
+//        printf("sn,dbvksandv");
+        human.active = true;
+        human.position.x =boat1.position.x;
+        human.position.y =250;
+        human.position.z = boat1.position.z;
+        printf("ekkadu");
+    }
+//    if(human.active && abs(human.position.x - boat1.position.x) <10 && abs(human.position.y - boat1.position.y) < 10){
+        if(boath){
+            human.active = false;
+            printf("digadu");
+        }
+//    }
+    if(human.active && front){
+        human.position.y += 0.5;
+    }
+    if(human.active && back){
+        human.position.y -= 0.5;
+    }
+    if(human.active && righth){
+        human.position.x += 0.5;
+    }
+    if(human.active && lefth){
+        human.position.x -= 0.5;
+    }
+    if(human.active && boath){
+        human.active = 0;
+        cam = 1;
+    }
     if(mouse_count == 1)
        {
            glfwGetCursorPos(window,&xin,&yin);
@@ -384,6 +431,11 @@ void tick_elements() {
     else
         flag.flag = -1;
 //    flag.position.z = boat1.position.z+4;
+    if(!human.active){
+        human.position.x = boat1.position.x;
+        human.position.y = boat1.position.y;
+        human.position.z = boat1.position.z;
+    }
     for(j=0;j<50;j++){
         if(detect_collision_rock(boat1.bounding_box(),rock[j].bounding_box()))
         {
@@ -593,7 +645,7 @@ void initGL(GLFWwindow *window, int width, int height) {
 
 
     water1      = Water(0,0,-2,500,500,1,COLOR_BLUE);
-    island      = Island(0,750,2,1000,500,5,COLOR_BROWN);
+    island      = Island(0,750,-2,1000,500,1,COLOR_BROWN);
     huge_gift   = Gift(0,1020,8,COLOR_GREEN);
     boat1       = Boat(0,0,2,8,2,1,COLOR_GREEN);
     cannon1     = Cannon(boat1.position.x,boat1.position.y,boat1.position.z+2,0.2,2,3);
@@ -610,6 +662,9 @@ void initGL(GLFWwindow *window, int width, int height) {
     eye_y = boat1.position.y -(3*cos(-boat1.rotation*M_PI/180.0));
     boat1.health = 100;
     eye_z = 4;
+
+    human =Monster(boat1.position.x,boat1.position.y,boat1.position.z+4,COLOR_BACKGROUND);
+    human.active = false;
     boss        = Boss(300,300,12,COLOR_BASETOP);
     for (j=0;j<50;j++)
     {
