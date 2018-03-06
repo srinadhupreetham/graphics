@@ -34,6 +34,7 @@ Cannon cannon1;
 Wave wave1,wave2;
 Wind_pointer point;
 Monster monster[20];
+Monster human;
 Flag flag;
 Island island;
 Gift gift[20];
@@ -127,12 +128,12 @@ void draw() {
         eye_z = boat1.position.z+2;
     }
     else if(cam==5){
-        target_x=boat1.position.x;
-        target_y=boat1.position.y;
+        target_x=boat1.position.x-0.00001;
+        target_y=boat1.position.y-0.00001;
         target_z=0;
-        eye_x = boat1.position.x;
-        eye_y = boat1.position.y;
-        eye_z = 30;
+        eye_x = 10;
+        eye_y = 5;
+        eye_z = 50;
     }
     glm::vec3 eye(eye_x,eye_y,eye_z);
     glm::vec3 target(target_x,target_y,target_z);
@@ -216,6 +217,8 @@ void tick_input(GLFWwindow *window) {
     int S = glfwGetKey(window, GLFW_KEY_4);
     int T = glfwGetKey(window, GLFW_KEY_5);
     int L = glfwGetKey(window, GLFW_KEY_0);
+    int land = glfwGetKey(window, GLFW_KEY_L);
+//    if(land && boat1.position.y)
     if(mouse_count == 1)
        {
            glfwGetCursorPos(window,&xin,&yin);
@@ -590,7 +593,7 @@ void initGL(GLFWwindow *window, int width, int height) {
 
 
     water1      = Water(0,0,-2,500,500,1,COLOR_BLUE);
-    island      = Island(0,1000,2,1000,500,5,COLOR_BROWN);
+    island      = Island(0,750,2,1000,500,5,COLOR_BROWN);
     huge_gift   = Gift(0,1020,8,COLOR_GREEN);
     boat1       = Boat(0,0,2,8,2,1,COLOR_GREEN);
     cannon1     = Cannon(boat1.position.x,boat1.position.y,boat1.position.z+2,0.2,2,3);
@@ -607,7 +610,7 @@ void initGL(GLFWwindow *window, int width, int height) {
     eye_y = boat1.position.y -(3*cos(-boat1.rotation*M_PI/180.0));
     boat1.health = 100;
     eye_z = 4;
-    boss        = Boss(100,100,12,COLOR_BASETOP);
+    boss        = Boss(300,300,12,COLOR_BASETOP);
     for (j=0;j<50;j++)
     {
         if (j%2 == 0){
