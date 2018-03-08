@@ -5,6 +5,7 @@ Cannon::Cannon(float x,float y,float z, float radius,float length,float back)
 {
     this->position = glm::vec3(x, y, z);
     this->rotation = 0;
+    this->rotation2 = 0;
     speed = 1;
     GLfloat vertex_buffer_data[720*3*3];
             int i=0;
@@ -155,6 +156,8 @@ void Cannon::draw(glm::mat4 VP) {
     Matrices.model = glm::mat4(1.0f);
     glm::mat4 translate1 = glm::translate (this->position);    // glTranslatef
     glm::mat4 rotate    = glm::rotate((float) (this->rotation * M_PI / 180.0f), glm::vec3(0, 0, 1));
+//     glm::mat4 rotate2    = glm::rotate((float) (this->rotation3 * M_PI / 180.0f), glm::vec3(sin(this->rotation*M_PI/180.0), cos(this->rotation1*M_PI/180.0), 0));
+//     glm::mat4 rotate2    = glm::rotate((float) (this->rotation2 * M_PI / 180.0f), glm::vec3(0, 0, 1));
 //    glm::mat4 translate2 = glm::translate (glm::vec3(this->position.x-this->X,this->position.y-this->Y,0));
 //    glm::mat4 rotate2    = glm::rotate((float) (this->rotation2 * M_PI / 180.0f), glm::vec3(0, 0, 1));
 //    glm::mat4 translate3 = glm::translate (glm::vec3(-(this->position.x-this->X),-(this->position.y-this->Y),0));

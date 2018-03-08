@@ -84,7 +84,7 @@ Wave::Wave(float x,float y,float z, float radius,float length,float back)
 
 
 //            this->base = create3DObject(GL_TRIANGLES,)
-            this->object = create3DObject(GL_TRIANGLES, 120*9, vertex_buffer_data/*+120*9*/, COLOR_WAVE, GL_FILL);
+            this->object = create3DObject(GL_TRIANGLES, 240*9, vertex_buffer_data/*+120*9*/, COLOR_WAVE, GL_FILL);
 
 }
 
@@ -109,6 +109,7 @@ void Wave::tick() {
 //this->rotation += 1;
     // this->position.x -= speed;
      this->position.y += speed;
+    this->rotation += 30;
 }
 void Wave::tickdown() {
 //this->rotation += 1;

@@ -20,8 +20,12 @@ public:
     bounding_box_t bounding_box();
 private:
     VAO *object;
+    VAO *object0;
     VAO * object1;
     VAO * object2;
+    VAO * object3;
+    VAO * object4;
+    VAO * object5;
     VAO *barrel1;
     VAO *barrel2;
 };

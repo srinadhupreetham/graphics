@@ -92,6 +92,12 @@
       <Unit filename="/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/ball.h">
          <Option target="graphics_asgn1"/>
       </Unit>
+      <Unit filename="/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/ballbullet.cpp">
+         <Option target="graphics_asgn1"/>
+      </Unit>
+      <Unit filename="/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/ballbullet.h">
+         <Option target="graphics_asgn1"/>
+      </Unit>
       <Unit filename="/home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/barrel.cpp">
          <Option target="graphics_asgn1"/>
       </Unit>

@@ -5,6 +5,10 @@ CMakeFiles/graphics_asgn1.dir/src/ball.cpp.o: /home/sai/Desktop/iiit-h-sem4/grap
 CMakeFiles/graphics_asgn1.dir/src/ball.cpp.o: /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/ball.h
 CMakeFiles/graphics_asgn1.dir/src/ball.cpp.o: /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
 
+CMakeFiles/graphics_asgn1.dir/src/ballbullet.cpp.o: /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/ballbullet.cpp
+CMakeFiles/graphics_asgn1.dir/src/ballbullet.cpp.o: /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/ballbullet.h
+CMakeFiles/graphics_asgn1.dir/src/ballbullet.cpp.o: /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
+
 CMakeFiles/graphics_asgn1.dir/src/barrel.cpp.o: /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/barrel.cpp
 CMakeFiles/graphics_asgn1.dir/src/barrel.cpp.o: /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/barrel.h
 CMakeFiles/graphics_asgn1.dir/src/barrel.cpp.o: /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
@@ -40,6 +44,7 @@ CMakeFiles/graphics_asgn1.dir/src/island.cpp.o: /home/sai/Desktop/iiit-h-sem4/gr
 CMakeFiles/graphics_asgn1.dir/src/island.cpp.o: /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/main.h
 
 CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/ball.h
+CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/ballbullet.h
 CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/barrel.h
 CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/boat.h
 CMakeFiles/graphics_asgn1.dir/src/main.cpp.o: /home/sai/Desktop/iiit-h-sem4/graphics/graphics/graphics-assign-2/src/boss.h

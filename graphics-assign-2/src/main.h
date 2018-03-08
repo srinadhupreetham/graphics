@@ -53,6 +53,7 @@ typedef struct VAO VAO;
 
 struct GLMatrices {
     glm::mat4 projection;
+    glm::mat4 projectionortho;
     glm::mat4 model;
     glm::mat4 view;
     GLuint    MatrixID;
@@ -73,10 +74,13 @@ struct bounding_box_t {
     float height;
 };
 void jump();
+void PlaySound();
 bool detect_collision(bounding_box_t a, bounding_box_t b);
 bool detect_collision_rock(bounding_box_t a, bounding_box_t b);
 bool detect_collision_bonus(bounding_box_t a, bounding_box_t b);
 bool detect_collision_enemy(bounding_box_t a, bounding_box_t b);
+void screen_zoom_in();
+void screen_zoom_out();
 
 extern float screen_zoom, screen_center_x, screen_center_y;
 void reset_screen();

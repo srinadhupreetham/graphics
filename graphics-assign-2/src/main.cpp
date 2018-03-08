@@ -1,6 +1,7 @@
 #include "main.h"
 #include "timer.h"
 #include "ball.h"
+#include "ballbullet.h"
 #include "water.h"
 #include "boat.h"
 #include "cannon.h"
@@ -16,6 +17,10 @@
 #include "island.h"
 #include "square.h"
 #include <sstream>
+#include <iostream>
+//#include <thread>
+//#include system()
+//#pragma comment (lib, "winmm.lib")
 using namespace std;
 
 GLMatrices Matrices;
@@ -26,7 +31,7 @@ GLFWwindow *window;
 * Customizable functions *
 **************************/
 
-Ball ball1;
+BallBullet ball1;
 Water water1;
 Boat boat1;
 Ball bonus_ball[40],booster[40];
@@ -44,7 +49,8 @@ Gift huge_gift;
 Square square[2500];
 float orient;
 Boss boss;
-int windcount=0;
+int boost_value=0;
+int windcount=0,boss_dead=0,enemy_killed = 0;
 int d=0,t=0;
 float angle[40];
 int changecount=0;
@@ -55,15 +61,17 @@ int count =0;
 int jumpcount = 0;
 double speed =0.4;
 float x_rand,y_rand,x_rand2,y_rand2,x_rand3,y_rand3;
-bool shoot =false,boost = false;
+bool shoot =false,boost = false,use = false,ortho = true,change = false;
 float screen_zoom = 1, screen_center_x = 0, screen_center_y = 0;
-float camera_rotation_angle = 0;
+float camera_rotation_angle = 0,bul_rot =0;
 int space1;
-int air;
+int air,tim=0;
+float camrad = 5.0;
+float ang = 45.0,temp_x=0.0,temp_y=0.0,temps_x = 0.0,temps_y = 0.0;
 int j;
 double xin,yin,xout,yout;
 int mouse_count = 1;
-int cam=0;
+int cam=1;
 float wind_dir=0.0f,distance=0.1;
 //float distance = 0.3;
 int boostcount=0;
@@ -74,6 +82,14 @@ float RandomFloat(float a, float b) {
     float diff = b - a;
     float r = random * diff;
     return a + r;
+}
+void screen_zoom_in(){
+    screen_zoom -= 1;
+    reset_screen();
+}
+void screen_zoom_out(){
+    screen_zoom += 1;
+    reset_screen();
 }
 /* Render the scene with openGL */
 /* Edit this function according to your assignment */
@@ -97,13 +113,14 @@ void draw() {
     // Target - Where is the camera looking at.  Don't change unless you are sure!!
 //    glm::vec3 target (boat1.position.x+(pan/8), boat1.position.y, 0);
     // Up - Up vector defines tilt of camera.  Don't change unless you are sure!!
+    glm::vec3 up(0,0,1);
     if (cam==1){
             target_x=boat1.position.x;
                          target_y=boat1.position.y;
             target_z=boat1.position.z;
         eye_x = boat1.position.x -(6*sin(-boat1.rotation*M_PI/180.0));
         eye_y = boat1.position.y -(6*cos(-boat1.rotation*M_PI/180.0));
-        eye_z = boat1.position.z+9;
+        eye_z = boat1.position.z+10;
     }
     else if(cam==2){
         target_x = boat1.position.x + 10000*(3*sin(-boat1.rotation*M_PI/180.0));
@@ -137,6 +154,14 @@ void draw() {
         eye_y = 5;
         eye_z = 50;
     }
+    else if(cam==6){
+        target_x=boat1.position.x;
+        target_y=boat1.position.y;
+        target_z=boat1.position.z;
+        eye_x = camrad*cos(ang*M_PI/180.0);
+        eye_y = camrad*sin(ang*M_PI/180.0);
+        eye_z = 30;
+    }
     else if(cam==8){
         target_x = human.position.x ;
         target_y = human.position.y;
@@ -147,7 +172,7 @@ void draw() {
     }
     glm::vec3 eye(eye_x,eye_y,eye_z);
     glm::vec3 target(target_x,target_y,target_z);
-    glm::vec3 up(0,0,1);
+
 
     // Compute Camera matrix (view)
     Matrices.view = glm::lookAt( eye, target, up ); // Rotating Camera for 3D
@@ -157,7 +182,10 @@ void draw() {
     // Compute ViewProject matrix as view/camera might not be changed for this frame (basic scenario)
     // Don't change unless you are sure!!
     glm::mat4 VP = Matrices.projection * Matrices.view;
-
+    if(ortho)
+    VP = Matrices.projection * Matrices.view;
+    else
+    VP = Matrices.projectionortho * Matrices.view;
     // Send our transformation to the currently bound shader, in the "MVP" uniform
     // For each model you render, since the MVP will be different (at least the M part)
     // Don't change unless you are sure!!
@@ -192,10 +220,12 @@ void draw() {
     {
         barrel[j].draw(VP);
         bonus_ball[j].draw(VP);
+        if(boss_dead!=0)
         booster[j].draw(VP);
         monster[j].draw(VP);
         gift[j].draw(VP);
     }
+    if(enemy_killed >2)
     boss.draw(VP);
 //    for(j=0;j<1;j++){
 //        if(j%2==0){
@@ -225,6 +255,11 @@ void tick_input(GLFWwindow *window) {
     int right = glfwGetKey(window, GLFW_KEY_RIGHT);
     int A = glfwGetKey(window, GLFW_KEY_A);
     int D = glfwGetKey(window, GLFW_KEY_D);
+    int G = glfwGetKey(window, GLFW_KEY_G);
+    int Q = glfwGetKey(window, GLFW_KEY_H);
+    int P = glfwGetKey(window, GLFW_KEY_P);
+    int M = glfwGetKey(window, GLFW_KEY_M);
+    int pers = glfwGetKey(window, GLFW_KEY_O);
     int up = glfwGetKey(window, GLFW_KEY_UP);
     int down = glfwGetKey(window, GLFW_KEY_DOWN);
 //    int space = glfwGetKey(window, GLFW_KEY_SPACE);
@@ -234,16 +269,33 @@ void tick_input(GLFWwindow *window) {
     int H = glfwGetKey(window, GLFW_KEY_3);
     int S = glfwGetKey(window, GLFW_KEY_4);
     int T = glfwGetKey(window, GLFW_KEY_5);
-    int L = glfwGetKey(window, GLFW_KEY_0);
+    int U = glfwGetKey(window, GLFW_KEY_6);
+    int L = glfwGetKey(window, GLFW_KEY_S);
+    int canup = glfwGetKey(window, GLFW_KEY_K);
+    int candown = glfwGetKey(window, GLFW_KEY_J);
+    int boost_use = glfwGetKey(window, GLFW_KEY_B);
+    int boost_stop = glfwGetKey(window, GLFW_KEY_N);
     int land = glfwGetKey(window, GLFW_KEY_L);
     int boath = glfwGetKey(window, GLFW_KEY_R);
     int front = glfwGetKey(window, GLFW_KEY_W);
     int lefth = glfwGetKey(window, GLFW_KEY_A);
     int righth = glfwGetKey(window, GLFW_KEY_D);
     int back = glfwGetKey(window, GLFW_KEY_S);
+    if(pers){
+        ortho = !ortho;
+    }
+
+    if(boost_use){
+        use = true;
+    }
+    if(boost_stop){
+        use = false;
+    }
     if(land && (boat1.position.y > 240) && boat1.position.y < 250){
 //        printf("sn,dbvksandv");
         human.active = true;
+        temp_x = boat1.position.x;
+        temp_y = boat1.position.y;
         human.position.x =boat1.position.x;
         human.position.y =250;
         human.position.z = boat1.position.z+3;
@@ -256,16 +308,16 @@ void tick_input(GLFWwindow *window) {
         }
 //    }
     if(human.active && front){
-        human.position.y += 0.5;
+        human.position.y += 0.1;
     }
     if(human.active && back){
-        human.position.y -= 0.5;
+        human.position.y -= 0.1;
     }
     if(human.active && righth){
-        human.position.x += 0.5;
+        human.position.x += 0.1;
     }
     if(human.active && lefth){
-        human.position.x -= 0.5;
+        human.position.x -= 0.1;
     }
     if(human.active && boath){
         human.active = 0;
@@ -276,6 +328,7 @@ void tick_input(GLFWwindow *window) {
            glfwGetCursorPos(window,&xin,&yin);
        }
     int mouseleft = glfwGetMouseButton(window,GLFW_MOUSE_BUTTON_LEFT);
+    int mouseright = glfwGetMouseButton(window,GLFW_MOUSE_BUTTON_RIGHT);
     mouse_count=0;
         if(mouse_count == 0)
         {
@@ -283,12 +336,43 @@ void tick_input(GLFWwindow *window) {
     //       std :: cout << xin;
     //       std :: cout << "\n";
         }
+        if (A /*|| ((xout - xin <0))*/){
+            change = true;
+            cannon1.rotation2 += 1;
+    //        cannon1.rotation3 += 10;
+        }
+        if(canup){
+            cannon1.rotation3 -= 1;
+        }
+        if(candown){
+            cannon1.rotation3 += 1;
+        }
+        if (D /*|| ((xout - xin >0)) */){
+            cannon1.rotation2 -= 1;
+            change = true;
+        }
     if (L) {
         shoot=true;
+        tim=0;
+        bul_rot = cannon1.rotation3;
         ball1.position.x = cannon1.position.x;
+        temps_x = cannon1.position.x;
         ball1.position.y = cannon1.position.y;
+        temps_y = cannon1.position.y;
         ball1.position.z = cannon1.position.z;
         ball1.angle = cannon1.rotation;
+    }
+    if(G || ((mouseleft == GLFW_PRESS) && (xout - xin <0))){
+        camrad += 1.0;
+    }
+    if(Q || ((mouseleft == GLFW_PRESS) && (xout - xin >0))){
+        camrad -= 1.0;
+    }
+    if(P || ((mouseright == GLFW_PRESS) && (xout - xin <0))){
+        ang += 1.0;
+    }
+    if(M || ((mouseright == GLFW_PRESS) && (xout - xin >0))){
+        ang -= 1.0;
     }
     if (left) {
 //        boat1.position.x -= 0.1;
@@ -320,6 +404,9 @@ void tick_input(GLFWwindow *window) {
         eye_y = 0;
         eye_z = 40;
     }
+    if (U){
+        cam =6;
+    }
     if (F){
         cam =1;
         target_x=boat1.position.x;
@@ -338,12 +425,7 @@ void tick_input(GLFWwindow *window) {
         eye_y =boat1.position.y;
         eye_z = boat1.position.z+3;
     }
-    if (A || ((mouseleft == GLFW_PRESS) && (xout - xin <0))){
-        cannon1.rotation += 1;
-    }
-    if (D || ((mouseleft == GLFW_PRESS) && (xout - xin >0)) ){
-        cannon1.rotation -= 1;
-    }
+
     if (S){
         cam =4;
     }
@@ -408,36 +490,46 @@ void tick_input(GLFWwindow *window) {
 }
 
 void tick_elements() {
+
     orient = atan2(boss.position.y - boat1.position.y, boss.position.x - boat1.position.x);
     boss.position.x -= 0.1*(cos(orient));
     boss.position.y -= 0.1*(sin(orient));
     boss.rotation += 5;
-    boat1.position.x -= 0.005*(sin(wind_dir*M_PI/180.0));
-    boat1.position.y += 0.005*(cos(wind_dir*M_PI/180.0));
+    boat1.position.x -= 0.05*(sin(wind_dir*M_PI/180.0));
+    boat1.position.y += 0.05*(cos(wind_dir*M_PI/180.0));
     flag.position.x = boat1.position.x;
     flag.position.y = boat1.position.y;
     cannon1.position.x = boat1.position.x;
     cannon1.position.y = boat1.position.y;
+    cannon1.rotation = boat1.rotation+cannon1.rotation2/*+cannon1.rotation3*/;
     if(human.active && abs(human.position.y - huge_gift.position.y)<1 && abs(human.position.x - huge_gift.position.x)<1) {
         boat1.score += 100;
         boat1.health += 100;
         huge_gift.position.y += 20;
         huge_gift.position.x += 20;
     }
-    if((int(boat1.rotation)%180 - int(wind_dir)%180 ) !=90)
+    printf("%f\n",boat1.rotation);
+    if(abs((int(abs(boat1.rotation)))%360 - (int(abs(wind_dir)))%360 )>5)
      {
- //       if(boat1.rotation < int(wind_dir)){
-          boat1.rotation += 0.1;
- //    }
- //    else
- //        boat1.rotation -= 0.1;
+//        if(boat1.rotation < int(wind_dir)){
+//          boat1.rotation += 0.01;
+//          cannon1.rotation = boat1.rotation;
+//     }
+
+//     else
+//         boat1.rotation -= 0.1;
+        printf("fndlgblsn.dn,.dbfkg");
+        if(abs(wind_dir) < boat1.rotation)
+        boat1.rotation += 0.1;
+        else
+            boat1.rotation -= 0.1;
     }
-     cannon1.rotation = boat1.rotation;
+
      flag.rotation = boat1.rotation;
      point.rotation = -wind_dir;
     point.position.x = boat1.position.x + 8*sin(boat1.rotation*M_PI/180.0);
     point.position.y = boat1.position.y - 8*cos(boat1.rotation*M_PI/180.0);
-    if((int(wind_dir)%360)-(int(boat1.rotation)%360) < 180){
+    if((int(abs(wind_dir))%180)-(int(abs(boat1.rotation))%180) < 180){
         flag.flag = 1;
     }
     else
@@ -473,29 +565,14 @@ void tick_elements() {
         }
     }
     for(j=0;j<40;j++){
-        if(detect_collision_bonus(boat1.bounding_box(),barrel[j].bounding_box()))
+        if(detect_collision_bonus(boat1.bounding_box(),barrel[j].bounding_box()) && boat1.position.z > 2)
         {
-//            if(boat1.position.x < barrel[j].position.x)
-//            {
-//                boat1.position.x -= 1;
-//            }
-//            else
-//                boat1.position.x += 1;
-//            if(boat1.position.y < barrel[j].position.x)
-//            {
-//                boat1.position.y -= 1;
-//            }
-//            else
-//                boat1.position.y += 1;
-//            boat1.position.z = 1;
+//            system(" canberra-gtk-play -f  ../music/boost.wav --volume=\"15\"   &");
             boat1.health += 10;
             barrel[j].position.x = RandomFloat(0,300);
             bonus_ball[j].position.x = barrel[j].position.x;
         }
     }
-//    for(j=0;j<20;j++){
-//        if(monster[j].position.x )
-//    }
     if(count > 40)
     {
         boat1.tickup();
@@ -514,7 +591,9 @@ void tick_elements() {
          for(j=0;j<20;j++){
 //        wave1.tickdown();
 //        wave2.tickdown();
-        wave[j].tickdown();}
+        wave[j].tickdown();
+         if(wave[j].position.y > 250)
+            wave[j].position.y = -250;}
         for(j=0;j<40;j++)
         {
             bonus_ball[j].tickdown();
@@ -530,9 +609,17 @@ void tick_elements() {
             boat1.position.z = 2.0;
         }
     }
-    if(shoot) {
-        ball1.position.x -= 0.5*sin(ball1.angle*M_PI/180.0f);
-        ball1.position.y += 0.5*cos(ball1.angle*M_PI/180.0f);
+    if(shoot ) {
+        ball1.position.x -= 2*sin(ball1.angle*M_PI/180.0f);
+        ball1.position.y += 2*cos(ball1.angle*M_PI/180.0f);
+
+    }
+    if(shoot && bul_rot!=0){
+//        ball1.position.z += 2*sin(bul_rot*M_PI/180.0)*tim - 0.05*tim*tim;
+    }
+    tim+=1;
+    if(tim>20){
+        tim= 0;
     }
     count += 1;
     if(count > 80)
@@ -540,29 +627,38 @@ void tick_elements() {
         count = 0;
     }
     for(j=0;j<40;j++){
-        if(((booster[j].position.x) < (boat1.position.x + 2)) && ((booster[j].position.x) > (boat1.position.x - 2)) && ((booster[j].position.y) < (boat1.position.y + 4)) && ((booster[j].position.y) > (boat1.position.y - 4))){
+        if(((booster[j].position.x) < (boat1.position.x + 2)) && ((booster[j].position.x) > (boat1.position.x - 2)) && ((booster[j].position.y) < (boat1.position.y + 4)) && ((booster[j].position.y) > (boat1.position.y - 4)) && boss_dead){
 //            printf("DONEndnflksndlv");
 //            boat1.position.z += 2;
             booster[j].position.x = RandomFloat(-200,200);
             booster[j].position.y = RandomFloat(-200,200);
-            boat1.velocity = 0.6;
-            boost = true;
+            boost_value += 60;
+            system(" canberra-gtk-play -f  ../music/gift.wav --volume=\"15\"   &");
+//            boat1.velocity = 0.6;
+//            boost = true;
         }
-        if(boostcount > 100){
-            boostcount=0;
-            boat1.velocity = 0.3;
-            boost = false;
-        }
+//        if(boostcount > 100){
+//            boostcount=0;
+//            boat1.velocity = 0.3;
+//            boost = false;
+//        }
         if(((gift[j].position.x) < (boat1.position.x + 2)) && ((gift[j].position.x) > (boat1.position.x - 2)) && ((gift[j].position.y) < (boat1.position.y + 4)) && ((gift[j].position.y) > (boat1.position.y - 4))){
 //            printf("DONEndnflksndlv");
             gift[j].position.x = RandomFloat(-200,200);
             gift[j].position.y = RandomFloat(-200,200);
+                        system(" canberra-gtk-play -f  ../music/gift.wav --volume=\"15\"   &");
             boat1.score += 10;
         }
+//        wave[j].tick();
     }
-    if(boost){
-        boostcount+=1;
+    if(use){
+        boost_value-=1;
     }
+    if(use && boost_value>0){
+        boat1.velocity = 0.6;
+    }
+    else
+        boat1.velocity = 0.3;
 //    wave1.tick();
 //    wave2.tick();
     for(j=0;j<20;j++){
@@ -571,13 +667,14 @@ void tick_elements() {
     camera_rotation_angle += 1;
     for(j=0;j<40;j++){
         bonus_ball[j].rotation += 10;
+        if(boss_dead)
         booster[j].rotation+=10;
         if(bonus_ball[j].rotation > 100){
             bonus_ball[j].rotation = 0;
         }
         gift[j].tick();
     }
-    if(windcount %30000 == 0)
+    if(windcount %300 == 0)
     {
 
         wind_dir = RandomFloat(0,360);
@@ -585,13 +682,13 @@ void tick_elements() {
 
         printf("%f\n",wind_dir);
     }
-    if(boat1.rotation > 360){
+    if(boat1.rotation > 360 || boat1.rotation< -360){
         boat1.rotation = 0;
     }
-    if(flag.rotation > 360){
+    if(flag.rotation > 360 || flag.rotation < -360){
         flag.rotation =0;
     }
-    if(cannon1.rotation > 360){
+    if(cannon1.rotation > 360 || cannon1.rotation < -360){
         cannon1.rotation =0;
     }
 //    if(windcount > 100)
@@ -613,6 +710,8 @@ void tick_elements() {
                 boat1.health -= 5;
                 monster[j].position.x += 50;
                 monster[j].position.y += 50;
+                shoot = false;
+                            system(" canberra-gtk-play -f  ../music/bullet.wav --volume=\"15\"   &");
 //            printf("kdbfkebigb");
         }
         else{
@@ -631,6 +730,7 @@ void tick_elements() {
             printf("sbdjvbsndlvnl;sdlvnlsdnl;vl;sdl;vnl;sdhvlskdnvl.sl");
             gift[j].position.x = monster[j].position.x;
             gift[j].position.y = monster[j].position.y;
+            enemy_killed +=1;
             ball1.position.x = boat1.position.x;
             ball1.position.y = boat1.position.y;
             monster[j].position.x += 50;
@@ -641,19 +741,24 @@ void tick_elements() {
         }
 
     }
-    if(detect_collision_enemy(boat1.bounding_box(),boss.bounding_box())){
-        boat1.health -=  10;
+    if(detect_collision_enemy(boat1.bounding_box(),boss.bounding_box()) && enemy_killed >2){
+        boat1.health -=  30;
+//        enemy_killed += 1;
+        shoot = false;
+                    system(" canberra-gtk-play -f  ../music/monster_boat.wav --volume=\"15\"   &");
         printf("done");
     }
-    if(abs(ball1.position.x -boss.position.x) < 2.0 && abs(ball1.position.y - boss.position.y)<2.000)
+    if(abs(ball1.position.x -boss.position.x) < 2.0 && abs(ball1.position.y - boss.position.y)<2.000 && enemy_killed > 2)
     {
 //        printf("sbdjvbsndlvnl;sdlvnlsdnl;vl;sdl;vnl;sdhvlskdnvl.sl");
         boss.health -= 10;
         boat1.score += 20;
         ball1.position.x = boat1.position.x;
         ball1.position.y = boat1.position.y;
+                    system(" canberra-gtk-play -f  ../music/monsterboss.wav --volume=\"15\"   &");
         if(boss.health < 0){
             printf("game won");
+            boss_dead+=1;
         }
         shoot = false;
     }
@@ -661,6 +766,14 @@ void tick_elements() {
 //        boat1.health -= 10;
 //    }
     changecount += 1;
+    if(boss.health<0){
+        boss.position.x = 300;
+    }
+
+    if(human.active){
+        boat1.position.y = temp_y;
+        boat1.position.x = temp_x;
+    }
 }
 
 /* Initialize the OpenGL rendering properties */
@@ -674,8 +787,8 @@ void initGL(GLFWwindow *window, int width, int height) {
     island      = Island(0,750,-2,1000,500,1,COLOR_BROWN);
     huge_gift   = Gift(0,260,3,COLOR_GREEN);
     boat1       = Boat(0,0,2,8,2,1,COLOR_GREEN);
-    cannon1     = Cannon(boat1.position.x,boat1.position.y,boat1.position.z+2,0.2,2,3);
-    ball1       = Ball(cannon1.position.x, cannon1.position.y, cannon1.position.z, COLOR_RED);
+    cannon1     = Cannon(boat1.position.x,boat1.position.y,boat1.position.z+2,0.2,4,3);
+    ball1       = BallBullet(cannon1.position.x, cannon1.position.y, cannon1.position.z, COLOR_RED);
     for(j=0;j<20;j++){
         if(j<10){
             sign = 1;
@@ -700,6 +813,7 @@ void initGL(GLFWwindow *window, int width, int height) {
     human =Monster(boat1.position.x,boat1.position.y,boat1.position.z+10,COLOR_BACKGROUND);
     human.active = false;
     boss        = Boss(300,300,12,COLOR_BASETOP);
+    boss.health = 100;
     for (j=0;j<100;j++)
     {
         if (j%4 == 0){
@@ -785,15 +899,26 @@ void initGL(GLFWwindow *window, int width, int height) {
     cout << "GLSL: " << glGetString(GL_SHADING_LANGUAGE_VERSION) << endl;
 }
 
-
+//void play_music() {
+//  PlaySound("../voila.wav", NULL, SND_FILENAME|SND_LOOP);
+//    sndPlaySound("../voila.wav",SND_ASYNC);
+//}
 int main(int argc, char **argv) {
     srand(time(0));
-    int width  = 600;
-    int height = 600;
+    int width  = 1600;
+    int height = 1024;
 
     window = initGLFW(width, height);
 
     initGL (window, width, height);
+//    system("viola.wav");
+    system("mplayer viola.wav");
+//    std::thread t(play_music);
+//    play_music();
+//        sndPlaySound("../voila.wav",SND_ASYNC);
+      // other code
+
+//      t.join();
 
     /* Draw in loop */
     while (!glfwWindowShouldClose(window)) {
@@ -808,15 +933,21 @@ int main(int argc, char **argv) {
                                 convert << boat1.score;
                                 Result = convert.str();
 
-                                const char *one = "Score ";
+                                const char *one = "Score :";
                                 const char *two = Result.c_str();
-                                const char *three = "   Health ";
+                                const char *three = "   Health :";
                                 string Result1;
                                 stringstream convert1;
                                 convert1 << boat1.health;
                                 Result1 = convert1.str();
                                 const char *four = Result1.c_str();
-                                string total( string(one) + two + string(three) + four);
+                                stringstream convert2;
+                                convert2 << boost_value;
+                                string Result2;
+                                Result2 = convert2.str();
+                                const char *five = "   Boost value :";
+                                const char *six  = Result2.c_str();
+                                string total( string(one) + two + string(three) + four +string(five) + six);
                                 glfwSetWindowTitle(window, total.c_str());
             draw();
             // Swap Frame Buffer in double buffering
@@ -856,5 +987,7 @@ void reset_screen() {
     float left   = screen_center_x - 4 / screen_zoom;
     float right  = screen_center_x + 4 / screen_zoom;
 //    float aspect = 6.0
-    Matrices.projection = glm::infinitePerspective(fov1, 0.5f, 0.2f);
+    Matrices.projectionortho = glm::ortho(+20.0f,-20.0f,-20.0f,+20.0f,0.2f,200.0f);
+//    Matrices.projection = glm::infinitePerspective(fov1, 0.5f, 0.2f);
+    Matrices.projection = glm::infinitePerspective(fov1, 0.6f, 0.2f);
 }

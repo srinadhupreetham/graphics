@@ -5,6 +5,7 @@ Boat::Boat(float x,float y,float z,float length,float width,float height,color_t
 {
     this->position = glm::vec3(x, y, z);
     this->rotation = 0;
+//    this->rotation2 = 0;
     speed = 0.02;
     this ->velocity = 0.3;
 //    speedz = 1.20;

@@ -21,6 +21,10 @@ private:
     VAO *object;
     VAO * object1;
     VAO * object2;
+    VAO *object3;
+    VAO * object4;
+    VAO * object5;
+    VAO * object0;
     VAO *barrel1;
     VAO *barrel2;
 };
